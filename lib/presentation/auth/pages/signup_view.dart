@@ -1,7 +1,20 @@
 part of '../index.dart';
 
-class SignupView extends StatelessWidget {
+class SignupView extends StatefulWidget {
   const SignupView({super.key});
+
+  @override
+  State<SignupView> createState() => _SignupViewState();
+}
+
+class _SignupViewState extends State<SignupView> {
+  final TextEditingController _firstNameController = TextEditingController();
+
+  final TextEditingController _lastNameController = TextEditingController();
+
+  final TextEditingController _emailController = TextEditingController();
+
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -9,23 +22,25 @@ class SignupView extends StatelessWidget {
       appBar: BasicAppbar(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 23),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TitleScreen(title: "Create Account"),
-            const SizedBox(height: 32),
-            _firstNameField(),
-            const SizedBox(height: 20),
-            _lastNameField(),
-            const SizedBox(height: 20),
-            _emailField(),
-            const SizedBox(height: 20),
-            _passwordField(),
-            const SizedBox(height: 20),
-            _continueButton(context),
-            const SizedBox(height: 20),
-            _authPrompt(context),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TitleScreen(title: "Create Account"),
+              const SizedBox(height: 32),
+              _firstNameField(),
+              const SizedBox(height: 20),
+              _lastNameField(),
+              const SizedBox(height: 20),
+              _emailField(),
+              const SizedBox(height: 20),
+              _passwordField(),
+              const SizedBox(height: 20),
+              _continueButton(context),
+              const SizedBox(height: 20),
+              _authPrompt(context),
+            ],
+          ),
         ),
       ),
     );
@@ -34,35 +49,41 @@ class SignupView extends StatelessWidget {
   Widget _firstNameField() {
     return CustomTextField(
       title: "Firstname",
-      controller: TextEditingController(),
+      controller: _firstNameController,
     );
   }
 
   Widget _lastNameField() {
-    return CustomTextField(
-      title: "Lastname",
-      controller: TextEditingController(),
-    );
+    return CustomTextField(title: "Lastname", controller: _lastNameController);
   }
 
   Widget _emailField() {
     return CustomTextField(
       title: "Email Address",
-      controller: TextEditingController(),
+      controller: _emailController,
     );
   }
 
   Widget _passwordField() {
-    return CustomTextField(
-      title: "Password",
-      controller: TextEditingController(),
-    );
+    return CustomTextField(title: "Password", controller: _passwordController);
   }
 
   Widget _continueButton(BuildContext context) {
     return BasicAppButton(
       onPressed: () {
-        AppNavigator.push(context, GenderAndAgeSelectionView());
+        AppNavigator.push(
+          context,
+          GenderAndAgeSelectionView(
+            userRequest: CreateUserRequest(
+              firstName: _firstNameController.text,
+              lastName: _lastNameController.text,
+              email: _emailController.text,
+              password: _passwordController.text,
+              gender: null,
+              age: null,
+            ),
+          ),
+        );
       },
       title: "Continue",
     );

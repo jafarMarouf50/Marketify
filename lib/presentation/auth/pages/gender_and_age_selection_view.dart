@@ -1,37 +1,65 @@
 part of '../index.dart';
 
 class GenderAndAgeSelectionView extends StatelessWidget {
-  const GenderAndAgeSelectionView({super.key});
+  const GenderAndAgeSelectionView({super.key, required this.userRequest});
+
+  final CreateUserRequest userRequest;
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => GenderSelectionCubit()),
-        BlocProvider(create: (context) => AgeSelectionCubit()),
-      ],
-      child: Scaffold(
-        appBar: BasicAppbar(hideBack: true),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TitleScreen(title: "Tell us About yourself"),
-                  const SizedBox(height: 30),
-                  _genders(context),
-                  const SizedBox(height: 30),
-                  _howOld(context),
-                  const SizedBox(height: 30),
-                  AgeSelection(),
-                ],
+    return Scaffold(
+      appBar: BasicAppbar(),
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => GenderSelectionCubit()),
+          BlocProvider(create: (context) => AgeSelectionCubit()),
+          BlocProvider(create: (context) => ButtonCubit()),
+        ],
+        child: BlocListener<ButtonCubit, ButtonState>(
+          listener: (context, state) {
+            if (state is ButtonStateFailure) {
+              var snackBar = SnackBar(
+                content: Text(state.errMsg),
+                behavior: SnackBarBehavior.floating,
+                showCloseIcon: true,
+                // duration: Duration(seconds: 2),
+                backgroundColor: AppColorsDark.primary,
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            }
+            if (state is ButtonStateSuccess) {
+              var snackBar = SnackBar(
+                content: Text("Create User Success"),
+                behavior: SnackBarBehavior.floating,
+                duration: Duration(seconds: 2),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            }
+          },
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 40,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TitleScreen(title: "Tell us About yourself"),
+                    const SizedBox(height: 30),
+                    _genders(context),
+                    const SizedBox(height: 30),
+                    _howOld(context),
+                    const SizedBox(height: 30),
+                    AgeSelection(),
+                  ],
+                ),
               ),
-            ),
-            const Spacer(),
-            _finishButton(context),
-          ],
+              const Spacer(),
+              _finishButton(context),
+            ],
+          ),
         ),
       ),
     );
@@ -62,7 +90,24 @@ class GenderAndAgeSelectionView extends StatelessWidget {
       color: AppColorsDark.secondBackground,
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Center(
-        child: BasicAppButton(onPressed: () {}, title: "Finish"),
+        child: Builder(
+          builder: (BuildContext context) {
+            return BasicReactiveButton(
+              onPressed: () {
+                userRequest.gender = context
+                    .read<GenderSelectionCubit>()
+                    .selectIndex;
+                userRequest.age = context.read<AgeSelectionCubit>().selectIndex;
+
+                context.read<ButtonCubit>().execute(
+                  usecase: SignupUseCase(),
+                  params: userRequest,
+                );
+              },
+              title: "Finish",
+            );
+          },
+        ),
       ),
     );
   }

@@ -1,5 +1,4 @@
-import 'package:ecommerce_app/core/config/assets/app_images.dart';
-import 'package:ecommerce_app/core/config/themes/app_colors.dart';
+import 'package:ecommerce_app/core/index.dart';
 import 'package:ecommerce_app/presentation/auth/index.dart';
 import 'package:ecommerce_app/presentation/splash/bloc/splash_cubit.dart';
 import 'package:ecommerce_app/presentation/splash/bloc/splash_state.dart';

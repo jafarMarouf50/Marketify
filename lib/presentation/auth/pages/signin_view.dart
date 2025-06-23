@@ -46,7 +46,7 @@ class SigninView extends StatelessWidget {
       promptText: "Don't have an Account? ",
       actionText: "Create One",
       onTap: () {
-        AppNavigator.push(context, const SignupView());
+        AppNavigator.push(context, SignupView());
       },
     );
   }

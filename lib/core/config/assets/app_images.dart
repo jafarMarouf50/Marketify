@@ -1,3 +1,5 @@
+part of '../../index.dart';
+
 class AppImages {
   AppImages._();
 
@@ -19,4 +21,3 @@ class AppImages {
 
   static const String vectorsSearch = "assets/vectors/search.svg";
 }
-

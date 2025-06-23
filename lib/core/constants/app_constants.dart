@@ -1,3 +1,5 @@
+part of '../index.dart';
+
 class AppConstants {
   // static const String appName = 'ecommerce_app';
   // static const String baseUrl = 'https://api.example.com';

@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-import 'app_colors.dart';
+part of '../../index.dart';
 
 class AppTheme {
   static final ThemeData darkTheme = ThemeData(
@@ -10,12 +8,12 @@ class AppTheme {
     primaryTextTheme: const TextTheme(
       bodyLarge: TextStyle(color: AppColorsDark.text),
     ),
-    fontFamily: 'CircularStd',
+    fontFamily: AppConstants.kFontFamily,
     snackBarTheme: const SnackBarThemeData(
       backgroundColor: AppColorsDark.background,
       contentTextStyle: TextStyle(
         color: AppColorsDark.text,
-        fontFamily: 'CircularStd',
+        fontFamily: AppConstants.kFontFamily,
       ),
     ),
 
@@ -43,7 +41,7 @@ class AppTheme {
         textStyle: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w400,
-          fontFamily: 'CircularStd',
+          fontFamily: AppConstants.kFontFamily,
         ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
       ),
@@ -67,12 +65,12 @@ class AppTheme {
     primaryTextTheme: const TextTheme(
       bodyLarge: TextStyle(color: AppColorsLight.text),
     ),
-    fontFamily: 'CircularStd',
+    fontFamily: AppConstants.kFontFamily,
     snackBarTheme: const SnackBarThemeData(
       backgroundColor: AppColorsLight.background,
       contentTextStyle: TextStyle(
         color: AppColorsLight.text,
-        fontFamily: 'CircularStd',
+        fontFamily: AppConstants.kFontFamily,
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
@@ -100,7 +98,7 @@ class AppTheme {
           fontSize: 16,
           fontWeight: FontWeight.w400,
           color: Colors.white,
-          fontFamily: 'CircularStd',
+          fontFamily: AppConstants.kFontFamily,
         ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
       ),
