@@ -2,6 +2,8 @@ part of '../index.dart';
 
 abstract class AuthFirebaseService {
   Future<Either> signup(CreateUserRequest request);
+
+  Future<Either> signin(LoginUserRequest request);
 }
 
 class AuthFirebaseServiceImp extends AuthFirebaseService {
@@ -30,6 +32,27 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
         message = 'The password provided is too weak.';
       } else if (e.code == 'email-already-in-use') {
         message = 'The account already exists for that email.';
+      }
+      return Left(message);
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
+
+  @override
+  Future<Either> signin(LoginUserRequest request) async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: request.email!,
+        password: request.password!,
+      );
+      return Right("Account User created Successfully!");
+    } on FirebaseAuthException catch (e) {
+      String message = '';
+      if (e.code == 'user-not-found') {
+        message = 'No user found for that email.';
+      } else if (e.code == 'wrong-password') {
+        message = 'Wrong password provided for that user.';
       }
       return Left(message);
     } catch (e) {

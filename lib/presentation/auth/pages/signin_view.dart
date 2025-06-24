@@ -1,7 +1,14 @@
 part of '../index.dart';
 
-class SigninView extends StatelessWidget {
+class SigninView extends StatefulWidget {
   const SigninView({super.key});
+
+  @override
+  State<SigninView> createState() => _SigninViewState();
+}
+
+class _SigninViewState extends State<SigninView> {
+  final _emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +35,22 @@ class SigninView extends StatelessWidget {
   Widget _emailField() {
     return CustomTextField(
       title: "Email Address",
-      controller: TextEditingController(),
+      controller: _emailController,
     );
   }
 
   Widget _continueButton(BuildContext context) {
     return BasicAppButton(
       onPressed: () {
-        AppNavigator.push(context, const EnterPasswordView());
+        AppNavigator.push(
+          context,
+          EnterPasswordView(
+            loginUserRequest: LoginUserRequest(
+              email: _emailController.text,
+              password: null,
+            ),
+          ),
+        );
       },
       title: "Continue",
     );

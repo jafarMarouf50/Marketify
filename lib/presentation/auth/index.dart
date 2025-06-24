@@ -1,7 +1,5 @@
 library;
 
-import 'dart:developer';
-
 import 'package:ecommerce_app/common/index.dart';
 import 'package:ecommerce_app/core/index.dart';
 import 'package:ecommerce_app/data/auth/index.dart';

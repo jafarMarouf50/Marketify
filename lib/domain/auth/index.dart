@@ -10,3 +10,4 @@ part './repositories/auth_repository.dart';
 
 //usecase
 part './usecases/signup_usecase.dart';
+part './usecases/signin_usecase.dart';

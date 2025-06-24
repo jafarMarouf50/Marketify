@@ -5,4 +5,9 @@ class AuthRepositoryImpl extends AuthRepository {
   Future<Either> signup(CreateUserRequest request) {
     return getIt<AuthFirebaseService>().signup(request);
   }
+
+  @override
+  Future<Either> signin(LoginUserRequest request) {
+    return getIt<AuthFirebaseService>().signin(request);
+  }
 }
