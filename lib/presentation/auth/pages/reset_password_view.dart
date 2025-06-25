@@ -27,7 +27,7 @@ class ResetPasswordView extends StatelessWidget {
   Widget _returnToLogin(BuildContext context) {
     return BasicAppButton(
       onPressed: () {
-        AppNavigator.pushReplacement(context, const SigninView());
+        AppNavigator.pushReplacementAndRemove(context, const SigninView());
       },
       title: "Return to Login",
       width: MediaQuery.sizeOf(context).width / 2.7,

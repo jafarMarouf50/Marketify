@@ -1,5 +1,7 @@
+import 'package:ecommerce_app/common/index.dart';
 import 'package:ecommerce_app/core/index.dart';
 import 'package:ecommerce_app/presentation/auth/index.dart';
+import 'package:ecommerce_app/presentation/home/index.dart';
 import 'package:ecommerce_app/presentation/splash/bloc/splash_cubit.dart';
 import 'package:ecommerce_app/presentation/splash/bloc/splash_state.dart';
 import 'package:flutter/material.dart';
@@ -14,9 +16,9 @@ class SplashView extends StatelessWidget {
     return BlocListener<SplashCubit, SplashState>(
       listener: (context, state) {
         if (state is UnAuthenticated) {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => SigninView()),
-          );
+          AppNavigator.pushReplacementAndRemove(context, const SigninView());
+        } else {
+          AppNavigator.pushReplacementAndRemove(context, const HomeView());
         }
       },
       child: Scaffold(

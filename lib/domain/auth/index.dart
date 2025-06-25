@@ -9,7 +9,12 @@ import 'package:ecommerce_app/service_locator.dart';
 part './repositories/auth_repository.dart';
 
 //usecase
-part './usecases/signup_usecase.dart';
-part './usecases/signin_usecase.dart';
-part './usecases/get_ages_usecase.dart';
-part './usecases/reset_password_usecase.dart';
+part './usecases/signup.dart';
+
+part './usecases/signin.dart';
+
+part './usecases/get_ages.dart';
+
+part './usecases/reset_password.dart';
+
+part './usecases/is_loggedin.dart';
