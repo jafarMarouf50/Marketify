@@ -14,4 +14,5 @@ Future<void> initializeDependency() async {
   // usecase
   getIt.registerSingleton<SignupUseCase>(SignupUseCase());
   getIt.registerSingleton<SigninUseCase>(SigninUseCase());
+  getIt.registerSingleton<GetAgesUseCase>(GetAgesUseCase());
 }

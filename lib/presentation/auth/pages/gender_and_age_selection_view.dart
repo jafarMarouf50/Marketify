@@ -13,26 +13,20 @@ class GenderAndAgeSelectionView extends StatelessWidget {
         providers: [
           BlocProvider(create: (context) => GenderSelectionCubit()),
           BlocProvider(create: (context) => AgeSelectionCubit()),
+          BlocProvider(create: (context) => GetAgesCubit()),
           BlocProvider(create: (context) => ButtonCubit()),
         ],
         child: BlocListener<ButtonCubit, ButtonState>(
           listener: (context, state) {
             if (state is ButtonStateFailure) {
-              var snackBar = SnackBar(
-                content: Text(state.errMsg),
-                behavior: SnackBarBehavior.floating,
-                showCloseIcon: true,
-                // duration: Duration(seconds: 2),
-                backgroundColor: AppColorsDark.primary,
+              var snackBar = AppSnackBar.show(
+                Text(state.errMsg),
+                backgroundColor: AppColors.danger,
               );
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             }
             if (state is ButtonStateSuccess) {
-              var snackBar = SnackBar(
-                content: Text("Create User Success"),
-                behavior: SnackBarBehavior.floating,
-                duration: Duration(seconds: 2),
-              );
+              var snackBar = AppSnackBar.show(Text("Create User Success"));
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             }
           },
@@ -97,7 +91,7 @@ class GenderAndAgeSelectionView extends StatelessWidget {
                 userRequest.gender = context
                     .read<GenderSelectionCubit>()
                     .selectIndex;
-                userRequest.age = context.read<AgeSelectionCubit>().selectIndex;
+                userRequest.age = context.read<AgeSelectionCubit>().selectedAge;
 
                 context.read<ButtonCubit>().execute(
                   usecase: SignupUseCase(),

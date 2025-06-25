@@ -16,3 +16,7 @@ class AppColorsDark {
   static const Color hintText = Color(0xffA7A7A7);
   static const Color text = Colors.white;
 }
+
+class AppColors {
+  static const Color danger = Color(0xffFF0000);
+}

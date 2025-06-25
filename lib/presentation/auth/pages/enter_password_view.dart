@@ -21,20 +21,14 @@ class _EnterPasswordViewState extends State<EnterPasswordView> {
         child: BlocListener<ButtonCubit, ButtonState>(
           listener: (context, state) {
             if (state is ButtonStateFailure) {
-              var snackBar = SnackBar(
-                content: Text(state.errMsg),
-                behavior: SnackBarBehavior.floating,
-                showCloseIcon: true,
-                backgroundColor: AppColorsDark.primary,
+              var snackBar = AppSnackBar.show(
+                Text(state.errMsg),
+                backgroundColor: AppColors.danger,
               );
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             }
             if (state is ButtonStateSuccess) {
-              var snackBar = SnackBar(
-                content: Text("Login Success"),
-                behavior: SnackBarBehavior.floating,
-                duration: Duration(seconds: 2),
-              );
+              var snackBar = AppSnackBar.show(Text("Login Success"));
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             }
           },

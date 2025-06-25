@@ -9,37 +9,51 @@ class AgeSelection extends StatelessWidget {
       context,
     ).extension<BoxDecorationTheme>();
     final cubit = context.read<AgeSelectionCubit>();
-    final List<String> ages = ["age1", "age2", "age3", "age4", "age5", "age6"];
-
-    return BlocBuilder<AgeSelectionCubit, String>(
-      builder: (context, state) {
-        return GestureDetector(
-          onTap: () {
-            AppBottomSheet.display(
-              context,
-              BlocProvider.value(
-                value: context.read<AgeSelectionCubit>(),
-                child: Ages(ages: ages),
-              ),
-            );
-          },
-          child: Container(
-            height: 60,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            decoration: boxDecorationTheme?.card,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  cubit.selectIndex,
-                  style: AppStyles.styleRegular16(context),
+    final selectedAge = context.watch<AgeSelectionCubit>().state;
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () {
+          AppBottomSheet.display(
+            context,
+            MultiBlocProvider(
+              providers: [
+                BlocProvider.value(value: context.read<AgeSelectionCubit>()),
+                BlocProvider.value(
+                  value: context.read<GetAgesCubit>()..getAges(),
                 ),
-                const Icon(Icons.keyboard_arrow_down),
               ],
+              child: Ages(),
             ),
+          );
+        },
+
+        // Match container's border radius
+        child: Container(
+          height: 60,
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          decoration: boxDecorationTheme?.card,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                cubit.selectedAge,
+                style: AppStyles.styleRegular16(context).copyWith(
+                  color: selectedAge == cubit.selectedAge
+                      ? AppColorsDark.text
+                      : AppColorsDark.hintText,
+                ),
+              ),
+              Icon(
+                Icons.keyboard_arrow_down,
+                color: cubit.selectedAge.isNotEmpty
+                    ? Theme.of(context).colorScheme.primary
+                    : Theme.of(context).hintColor,
+              ),
+            ],
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

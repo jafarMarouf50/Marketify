@@ -4,6 +4,8 @@ abstract class AuthFirebaseService {
   Future<Either> signup(CreateUserRequest request);
 
   Future<Either> signin(LoginUserRequest request);
+
+  Future<Either> getAges();
 }
 
 class AuthFirebaseServiceImp extends AuthFirebaseService {
@@ -32,6 +34,8 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
         message = 'The password provided is too weak.';
       } else if (e.code == 'email-already-in-use') {
         message = 'The account already exists for that email.';
+      } else {
+        message = e.code;
       }
       return Left(message);
     } catch (e) {
@@ -53,6 +57,28 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
         message = 'No user found for that email.';
       } else if (e.code == 'wrong-password') {
         message = 'Wrong password provided for that user.';
+      } else {
+        message = e.code;
+      }
+      return Left(message);
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
+
+  @override
+  Future<Either> getAges() async {
+    try {
+      var data = await FirebaseFirestore.instance.collection("Ages").get();
+      return Right(data.docs);
+    } on FirebaseAuthException catch (e) {
+      String message = '';
+      if (e.code == 'user-not-found') {
+        message = 'No user found for that email.';
+      } else if (e.code == 'wrong-password') {
+        message = 'Wrong password provided for that user.';
+      } else {
+        message = e.code;
       }
       return Left(message);
     } catch (e) {
