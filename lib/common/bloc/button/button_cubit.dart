@@ -12,7 +12,7 @@ class ButtonCubit extends Cubit<ButtonState> {
           emit(ButtonStateFailure(errMsg: error));
         },
         (data) {
-          emit(ButtonStateSuccess());
+          emit(ButtonStateSuccess(dataSuccess: data));
         },
       );
     } catch (e) {

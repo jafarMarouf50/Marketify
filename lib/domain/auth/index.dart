@@ -12,3 +12,4 @@ part './repositories/auth_repository.dart';
 part './usecases/signup_usecase.dart';
 part './usecases/signin_usecase.dart';
 part './usecases/get_ages_usecase.dart';
+part './usecases/reset_password_usecase.dart';

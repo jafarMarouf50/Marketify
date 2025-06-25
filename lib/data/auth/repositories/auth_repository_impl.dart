@@ -15,4 +15,9 @@ class AuthRepositoryImpl extends AuthRepository {
   Future<Either> getAges() async {
     return await getIt<AuthFirebaseService>().getAges();
   }
+
+  @override
+  Future<Either> resetPassword(String email) async {
+    return await getIt<AuthFirebaseService>().resetPassword(email);
+  }
 }

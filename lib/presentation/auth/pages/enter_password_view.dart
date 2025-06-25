@@ -28,8 +28,9 @@ class _EnterPasswordViewState extends State<EnterPasswordView> {
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             }
             if (state is ButtonStateSuccess) {
-              var snackBar = AppSnackBar.show(Text("Login Success"));
+              var snackBar = AppSnackBar.show(Text(state.dataSuccess));
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              AppNavigator.pushReplacement(context, const HomeView());
             }
           },
           child: Padding(

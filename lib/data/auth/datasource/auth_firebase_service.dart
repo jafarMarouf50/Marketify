@@ -6,6 +6,8 @@ abstract class AuthFirebaseService {
   Future<Either> signin(LoginUserRequest request);
 
   Future<Either> getAges();
+
+  Future<Either> resetPassword(String email);
 }
 
 class AuthFirebaseServiceImp extends AuthFirebaseService {
@@ -50,7 +52,7 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
         email: request.email!,
         password: request.password!,
       );
-      return Right("Account User created Successfully!");
+      return Right("Sign in Successfully!");
     } on FirebaseAuthException catch (e) {
       String message = '';
       if (e.code == 'user-not-found') {
@@ -83,6 +85,16 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
       return Left(message);
     } catch (e) {
       return Left(e.toString());
+    }
+  }
+
+  @override
+  Future<Either> resetPassword(String email) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      return Right("Send Password Reset Email Successfully!");
+    } on FirebaseAuthException catch (e) {
+      return Left("Failed with error code: ${e.code}");
     }
   }
 }

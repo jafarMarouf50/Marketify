@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/bloc_observer.dart';
 import 'package:ecommerce_app/core/index.dart';
 import 'package:ecommerce_app/firebase_options.dart';
 import 'package:ecommerce_app/presentation/splash/bloc/splash_cubit.dart';
@@ -11,6 +12,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   initializeDependency();
+  Bloc.observer = const AppBlocObserver();
   runApp(const MyApp());
 }
 
