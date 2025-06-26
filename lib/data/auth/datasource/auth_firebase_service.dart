@@ -10,6 +10,8 @@ abstract class AuthFirebaseService {
   Future<Either> resetPassword(String email);
 
   Future<bool> isLoggedIn();
+
+  Future<Either> getUser();
 }
 
 class AuthFirebaseServiceImp extends AuthFirebaseService {
@@ -57,10 +59,10 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
       return Right("Sign in Successfully!");
     } on FirebaseAuthException catch (e) {
       String message = '';
-      if (e.code == 'user-not-found') {
-        message = 'No user found for that email.';
+      if (e.code == 'bloc-not-found') {
+        message = 'No bloc found for that email.';
       } else if (e.code == 'wrong-password') {
-        message = 'Wrong password provided for that user.';
+        message = 'Wrong password provided for that bloc.';
       } else {
         message = e.code;
       }
@@ -77,10 +79,10 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
       return Right(data.docs);
     } on FirebaseAuthException catch (e) {
       String message = '';
-      if (e.code == 'user-not-found') {
-        message = 'No user found for that email.';
+      if (e.code == 'bloc-not-found') {
+        message = 'No bloc found for that email.';
       } else if (e.code == 'wrong-password') {
-        message = 'Wrong password provided for that user.';
+        message = 'Wrong password provided for that bloc.';
       } else {
         message = e.code;
       }
@@ -106,6 +108,24 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
       return false;
     } else {
       return true;
+    }
+  }
+
+  @override
+  Future<Either> getUser() async {
+    try {
+      var authUser = FirebaseAuth.instance.currentUser;
+      var currentUserData = await FirebaseFirestore.instance
+          .collection("users")
+          .doc(authUser?.uid)
+          .get()
+          .then((value) => value.data());
+      return Right(currentUserData);
+    } on FirebaseAuthException catch (e) {
+      // log("+++++++++FirebaseAuthException+++${e.code}+++++++++++");
+      return Left("Failed with error code: ${e.code}");
+    } catch (e) {
+      return Left("Something was wrong!, ${e.toString()}");
     }
   }
 }

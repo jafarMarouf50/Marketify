@@ -17,4 +17,9 @@ part './usecases/get_ages.dart';
 
 part './usecases/reset_password.dart';
 
-part './usecases/is_loggedin.dart';
+part './usecases/is_logged.dart';
+
+part './usecases/get_current_user.dart';
+
+//entity
+part './entity/user_entity.dart';
