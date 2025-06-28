@@ -19,4 +19,6 @@ class AppColorsDark {
 
 class AppColors {
   static const Color danger = Color(0xffFF0000);
+  static const Color selectedBtmNavBar = Color(0xff8e6cef);
+  static const Color unSelectedBtmNavBar = Color(0xff939393);
 }

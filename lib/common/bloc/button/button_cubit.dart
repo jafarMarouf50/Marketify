@@ -7,6 +7,7 @@ class ButtonCubit extends Cubit<ButtonState> {
     emit(ButtonStateLoading());
     try {
       final result = await usecase.call(params: params);
+
       result.fold(
         (error) {
           emit(ButtonStateFailure(errMsg: error));

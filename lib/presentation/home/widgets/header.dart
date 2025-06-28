@@ -22,8 +22,27 @@ class Header extends StatelessWidget {
               ],
             );
           }
-          return Container();
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _defaultProfileImage(),
+              _defaultGender(context),
+              _card(),
+            ],
+          );
         },
+      ),
+    );
+  }
+
+  Widget _defaultProfileImage() {
+    return Container(
+      width: 40,
+      height: 40,
+      decoration: BoxDecoration(
+        image: DecorationImage(image: AssetImage(AppImages.imagesProfile)),
+        shape: BoxShape.circle,
+        color: AppColorsDark.background,
       ),
     );
   }
@@ -42,10 +61,9 @@ class Header extends StatelessWidget {
     );
   }
 
-  Widget _gender(BuildContext context, int gender) {
+  Widget _defaultGender(BuildContext context) {
     return Container(
-      height: 40,
-      padding: EdgeInsets.symmetric(horizontal: 24),
+      padding: EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
         color: AppColorsDark.secondBackground,
@@ -53,14 +71,31 @@ class Header extends StatelessWidget {
       child: Center(
         child: Row(
           children: [
-            Text(
-              gender == 0 ? "Men" : "Women",
-              style: AppStyles.styleBold16(context),
-            ),
+            Text("Men", style: AppStyles.styleBold16(context)),
             SizedBox(width: 4),
             Icon(Icons.keyboard_arrow_down),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _gender(BuildContext context, int gender) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100),
+        color: AppColorsDark.secondBackground,
+      ),
+      child: Row(
+        children: [
+          Text(
+            gender == 1 ? "Men" : "Women",
+            style: AppStyles.styleBold16(context),
+          ),
+          SizedBox(width: 4),
+          Icon(Icons.keyboard_arrow_down),
+        ],
       ),
     );
   }

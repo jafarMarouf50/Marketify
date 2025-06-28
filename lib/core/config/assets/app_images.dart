@@ -3,21 +3,29 @@ part of '../../index.dart';
 class AppImages {
   AppImages._();
 
-  static const String imagesOrderPlaced = "assets/images/order_placed.png";
+  static const String basePathVectors = "assets/vectors";
+  static const String basePathImages = "assets/images";
 
-  static const String imagesProfile = "assets/images/profile.png";
+  static const String imagesOrderPlaced = "$basePathImages/order_placed.png";
+  static const String imagesProfile = "$basePathImages/profile.png";
 
-  static const String vectorsBag = "assets/vectors/bag.svg";
+  static const String vectorsBag = "$basePathVectors/bag.svg";
 
-  static const String vectorsCartBag = "assets/vectors/cart_bag.svg";
+  static const String vectorsCartBag = "$basePathVectors/cart_bag.svg";
 
-  static const String vectorsEmailSending = "assets/vectors/email_sending.svg";
+  static const String vectorsEmailSending =
+      "$basePathVectors/email_sending.svg";
 
-  static const String vectorsLogo = "assets/vectors/logo.svg";
+  static const String vectorsLogo = "$basePathVectors/logo.svg";
 
-  static const String vectorsNotFound = "assets/vectors/not_found.svg";
+  static const String vectorsNotFound = "$basePathVectors/not_found.svg";
 
-  static const String vectorsProfile = "assets/vectors/profile.svg";
+  static const String vectorsSearch = "$basePathVectors/search.svg";
 
-  static const String vectorsSearch = "assets/vectors/search.svg";
+  static const String vectorsArrowDown = "$basePathVectors/arrow-down.svg";
+
+  static const String vectorsHome = "$basePathVectors/home.svg";
+  static const String vectorsProfile2 = "$basePathVectors/profile2.svg";
+  static const String vectorsNotification = "$basePathVectors/notification.svg";
+  static const String vectorsReceipt = "$basePathVectors/receipt.svg";
 }

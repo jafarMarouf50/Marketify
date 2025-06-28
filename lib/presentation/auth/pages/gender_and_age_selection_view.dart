@@ -26,9 +26,10 @@ class GenderAndAgeSelectionView extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             }
             if (state is ButtonStateSuccess) {
-              var snackBar = AppSnackBar.show(Text(state.dataSuccess));
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              AppNavigator.pushReplacementAndRemove(context, const HomeView());
+              AppNavigator.pushReplacementAndRemove(
+                context,
+                const CustomBottomNavBar(),
+              );
             }
           },
           child: Column(

@@ -12,6 +12,8 @@ abstract class AuthFirebaseService {
   Future<bool> isLoggedIn();
 
   Future<Either> getUser();
+
+  Future<Either> signOut();
 }
 
 class AuthFirebaseServiceImp extends AuthFirebaseService {
@@ -122,7 +124,18 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
           .then((value) => value.data());
       return Right(currentUserData);
     } on FirebaseAuthException catch (e) {
-      // log("+++++++++FirebaseAuthException+++${e.code}+++++++++++");
+      return Left("Failed with error code: ${e.code}");
+    } catch (e) {
+      return Left("Something was wrong!, ${e.toString()}");
+    }
+  }
+
+  @override
+  Future<Either> signOut() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      return Right("Sign out Successfully!");
+    } on FirebaseAuthException catch (e) {
       return Left("Failed with error code: ${e.code}");
     } catch (e) {
       return Left("Something was wrong!, ${e.toString()}");

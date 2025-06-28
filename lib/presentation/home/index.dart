@@ -7,13 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-// pages
-part './pages/home_view.dart';
-
-// widgets
-part './widgets/header.dart';
-
 // bloc
 part './bloc/user/user_info_display_cubit.dart';
-
 part './bloc/user/user_info_display_state.dart';
+// pages
+part './pages/home_view.dart';
+part './widgets/categories.dart';
+// widgets
+part './widgets/header.dart';
+part './widgets/search_filed.dart';
+part './widgets/top_selling.dart';

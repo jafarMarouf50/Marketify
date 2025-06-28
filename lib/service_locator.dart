@@ -18,4 +18,5 @@ Future<void> initializeDependency() async {
   getIt.registerSingleton<ResetPasswordUseCase>(ResetPasswordUseCase());
   getIt.registerSingleton<IsLoggedInUseCase>(IsLoggedInUseCase());
   getIt.registerSingleton<GetCurrentUserUseCase>(GetCurrentUserUseCase());
+  getIt.registerSingleton<SignoutUseCase>(SignoutUseCase());
 }
