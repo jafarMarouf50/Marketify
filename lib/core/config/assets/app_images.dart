@@ -8,6 +8,14 @@ class AppImages {
 
   static const String imagesOrderPlaced = "$basePathImages/order_placed.png";
   static const String imagesProfile = "$basePathImages/profile.png";
+  static const String imagesBell = '$basePathImages/bell.png';
+  static const String imagesCheckOut = '$basePathImages/check-out.png';
+  static const String imagesFleeceSkateHoodie =
+      '$basePathImages/fleece_skate_hoodie.png';
+  static const String imagesFleecePulloverHoodie =
+      '$basePathImages/fleece_pullover_hoodie.png';
+
+  static const String imagesHoodies = '$basePathImages/hoodies.png';
 
   static const String vectorsBag = "$basePathVectors/bag.svg";
 
@@ -24,8 +32,17 @@ class AppImages {
 
   static const String vectorsArrowDown = "$basePathVectors/arrow-down.svg";
 
-  static const String vectorsHome = "$basePathVectors/home.svg";
-  static const String vectorsProfile2 = "$basePathVectors/profile2.svg";
-  static const String vectorsNotification = "$basePathVectors/notification.svg";
-  static const String vectorsReceipt = "$basePathVectors/receipt.svg";
+  static const String vectorsUnselectedHome =
+      '$basePathVectors/unselected_home.svg';
+
+  static const String vectorsUnSelectedProfile2 =
+      "$basePathVectors/unselected_profile2.svg";
+
+  static const String vectorsUnSelectedNotification =
+      "$basePathVectors/unselected_notification.svg";
+
+  static const String vectorsUnSelectedReceipt =
+      "$basePathVectors/unselected_receipt.svg";
+  static const String vectorsHeart = '$basePathVectors/heart.svg';
+  static const String vectorsArrowLeft = '$basePathVectors/arrow-left.svg';
 }

@@ -6,19 +6,25 @@ class ResetPasswordView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(hideBack: true),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SvgPicture.asset(AppImages.vectorsEmailSending),
-          SizedBox(height: 24),
-          Text(
-            "We Sent you an Email to reset your password.",
-            style: AppStyles.styleMedium24(context).copyWith(),
-            textAlign: TextAlign.center,
+      body: CustomScrollView(
+        slivers: [
+          BasicAppbar(hideBack: true),
+          SliverToBoxAdapter(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(AppImages.vectorsEmailSending),
+                SizedBox(height: 24),
+                Text(
+                  "We Sent you an Email to reset your password.",
+                  style: AppStyles.styleMedium20(context).copyWith(),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 24),
+                _returnToLogin(context),
+              ],
+            ),
           ),
-          SizedBox(height: 24),
-          _returnToLogin(context),
         ],
       ),
     );

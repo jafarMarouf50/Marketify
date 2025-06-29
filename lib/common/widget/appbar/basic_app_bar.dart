@@ -22,7 +22,8 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
       context,
     ).extension<BoxDecorationTheme>();
 
-    return AppBar(
+    return SliverAppBar(
+      pinned: false,
       backgroundColor: backgroundColor ?? Colors.transparent,
       elevation: 0,
       centerTitle: true,
@@ -43,10 +44,12 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
                 decoration: boxDecorationTheme?.card.copyWith(
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: const Icon(
-                  Icons.arrow_back_ios_new,
-                  size: 15,
-                  color: Colors.white,
+                child: Center(
+                  child: SvgPicture.asset(
+                    AppImages.vectorsArrowLeft,
+                    height: 16,
+                    width: 16,
+                  ),
                 ),
               ),
             ),

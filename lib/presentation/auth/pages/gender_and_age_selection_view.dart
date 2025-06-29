@@ -8,7 +8,6 @@ class GenderAndAgeSelectionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(),
       body: MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => GenderSelectionCubit()),
@@ -32,28 +31,35 @@ class GenderAndAgeSelectionView extends StatelessWidget {
               );
             }
           },
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 40,
-                ),
+          child: CustomScrollView(
+            slivers: [
+              BasicAppbar(),
+              SliverFillRemaining(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TitleScreen(title: "Tell us About yourself"),
-                    const SizedBox(height: 30),
-                    _genders(context),
-                    const SizedBox(height: 30),
-                    _howOld(context),
-                    const SizedBox(height: 30),
-                    AgeSelection(),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 40,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          TitleScreen(title: "Tell us About yourself"),
+                          const SizedBox(height: 30),
+                          _genders(context),
+                          const SizedBox(height: 30),
+                          _howOld(context),
+                          const SizedBox(height: 30),
+                          AgeSelection(),
+                        ],
+                      ),
+                    ),
+                    const Spacer(),
+                    _finishButton(context),
                   ],
                 ),
               ),
-              const Spacer(),
-              _finishButton(context),
             ],
           ),
         ),
@@ -77,7 +83,7 @@ class GenderAndAgeSelectionView extends StatelessWidget {
   }
 
   Widget _howOld(BuildContext context) {
-    return Text("How Old are you?", style: AppStyles.styleMedium16(context));
+    return Text("How Old are you?", style: AppStyles.styleMedium12(context));
   }
 
   Widget _finishButton(BuildContext context) {

@@ -50,7 +50,7 @@ class BasicReactiveButton extends StatelessWidget {
       ),
       child: Text(
         title,
-        style: AppStyles.styleMedium16(context).copyWith(color: Colors.white),
+        style: AppStyles.styleMedium12(context).copyWith(color: Colors.white),
       ),
     );
   }

@@ -15,7 +15,6 @@ class _EnterPasswordViewState extends State<EnterPasswordView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(),
       body: BlocProvider(
         create: (context) => ButtonCubit(),
         child: BlocListener<ButtonCubit, ButtonState>(
@@ -34,20 +33,27 @@ class _EnterPasswordViewState extends State<EnterPasswordView> {
               );
             }
           },
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 23),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TitleScreen(title: "Sign in"),
-                const SizedBox(height: 32),
-                _passwordField(),
-                const SizedBox(height: 20),
-                _continueButton(context),
-                const SizedBox(height: 20),
-                _authPrompt(context),
-              ],
-            ),
+          child: CustomScrollView(
+            slivers: [
+              BasicAppbar(),
+              SliverFillRemaining(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 23),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TitleScreen(title: "Sign in"),
+                      const SizedBox(height: 32),
+                      _passwordField(),
+                      const SizedBox(height: 20),
+                      _continueButton(context),
+                      const SizedBox(height: 20),
+                      _authPrompt(context),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

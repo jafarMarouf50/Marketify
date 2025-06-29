@@ -13,21 +13,27 @@ class _SigninViewState extends State<SigninView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const BasicAppbar(hideBack: true),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 23),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const TitleScreen(title: "Sign in"),
-            const SizedBox(height: 32),
-            _emailField(),
-            const SizedBox(height: 20),
-            _continueButton(context),
-            const SizedBox(height: 20),
-            _authPrompt(context),
-          ],
-        ),
+      body: CustomScrollView(
+        slivers: [
+          BasicAppbar(hideBack: true),
+          SliverFillRemaining(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 23),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const TitleScreen(title: "Sign in"),
+                  const SizedBox(height: 32),
+                  _emailField(),
+                  const SizedBox(height: 20),
+                  _continueButton(context),
+                  const SizedBox(height: 20),
+                  _authPrompt(context),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

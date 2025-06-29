@@ -21,10 +21,10 @@ class BottomNavBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            _buildIcon(0, AppImages.vectorsHome),
-            _buildIcon(1, AppImages.vectorsNotification),
-            _buildIcon(2, AppImages.vectorsReceipt),
-            _buildIcon(3, AppImages.vectorsProfile2),
+            _buildIcon(0, AppImages.vectorsUnselectedHome),
+            _buildIcon(1, AppImages.vectorsUnSelectedNotification),
+            _buildIcon(2, AppImages.vectorsUnSelectedReceipt),
+            _buildIcon(3, AppImages.vectorsUnSelectedProfile2),
           ],
         ),
       ),

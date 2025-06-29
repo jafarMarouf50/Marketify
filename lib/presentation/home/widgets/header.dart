@@ -13,13 +13,16 @@ class Header extends StatelessWidget {
             return Center(child: CircularProgressIndicator());
           }
           if (state is UserInfoDisplayLoaded) {
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _profileImage(state.user.image),
-                _gender(context, state.user.gender),
-                _card(),
-              ],
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _profileImage(state.user.image),
+                  _gender(context, state.user.gender),
+                  _card(),
+                ],
+              ),
             );
           }
           return Row(

@@ -19,29 +19,35 @@ class _SignupViewState extends State<SignupView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 23),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TitleScreen(title: "Create Account"),
-              const SizedBox(height: 32),
-              _firstNameField(),
-              const SizedBox(height: 20),
-              _lastNameField(),
-              const SizedBox(height: 20),
-              _emailField(),
-              const SizedBox(height: 20),
-              _passwordField(),
-              const SizedBox(height: 20),
-              _continueButton(context),
-              const SizedBox(height: 20),
-              _authPrompt(context),
-            ],
+      body: CustomScrollView(
+        slivers: [
+          BasicAppbar(),
+          SliverFillRemaining(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 23),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TitleScreen(title: "Create Account"),
+                    const SizedBox(height: 32),
+                    _firstNameField(),
+                    const SizedBox(height: 20),
+                    _lastNameField(),
+                    const SizedBox(height: 20),
+                    _emailField(),
+                    const SizedBox(height: 20),
+                    _passwordField(),
+                    const SizedBox(height: 20),
+                    _continueButton(context),
+                    const SizedBox(height: 20),
+                    _authPrompt(context),
+                  ],
+                ),
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -94,7 +100,7 @@ class _SignupViewState extends State<SignupView> {
       promptText: "Do you have an Account? ",
       actionText: "Sign in",
       onTap: () {
-        AppNavigator.pushReplacement(context, const SigninView());
+        AppNavigator.pushReplacementAndRemove(context, const SigninView());
       },
     );
   }

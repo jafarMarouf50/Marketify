@@ -17,6 +17,10 @@ abstract class AppStyles {
     return const TextStyle(fontSize: 16, fontWeight: FontWeight.normal);
   }
 
+  static TextStyle styleMedium12(BuildContext context) {
+    return const TextStyle(fontSize: 12, fontWeight: FontWeight.w500);
+  }
+
   static TextStyle styleMedium16(BuildContext context) {
     return const TextStyle(fontSize: 16, fontWeight: FontWeight.w500);
   }
@@ -25,7 +29,7 @@ abstract class AppStyles {
     return const TextStyle(fontSize: 16, fontWeight: FontWeight.bold);
   }
 
-  static TextStyle styleMedium24(BuildContext context) {
+  static TextStyle styleMedium20(BuildContext context) {
     return const TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.w500,
@@ -47,6 +51,10 @@ abstract class AppStyles {
 
   static TextStyle styleBold20(BuildContext context) {
     return const TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
+  }
+
+  static TextStyle styleBold24(BuildContext context) {
+    return const TextStyle(fontSize: 24, fontWeight: FontWeight.bold);
   }
 
   static TextStyle styleBold32(BuildContext context) {

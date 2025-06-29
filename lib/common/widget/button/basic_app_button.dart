@@ -6,6 +6,7 @@ class BasicAppButton extends StatelessWidget {
   final Widget? content;
   final double? height;
   final double? width;
+  final TextStyle? style;
 
   const BasicAppButton({
     required this.onPressed,
@@ -13,6 +14,7 @@ class BasicAppButton extends StatelessWidget {
     this.height,
     this.width,
     this.content,
+    this.style,
     super.key,
   });
 
@@ -30,9 +32,9 @@ class BasicAppButton extends StatelessWidget {
           content ??
           Text(
             title,
-            style: AppStyles.styleMedium16(
-              context,
-            ).copyWith(color: Colors.white),
+            style:
+                style ??
+                AppStyles.styleMedium12(context).copyWith(color: Colors.white),
           ),
     );
   }

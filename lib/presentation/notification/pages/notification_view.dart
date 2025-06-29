@@ -5,6 +5,11 @@ class NotificationView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text("Notification"));
+    return const CustomScrollView(
+      slivers: [
+        BasicAppbar(hideBack: true, title: Text("Notifications")),
+        AllNotifications(),
+      ],
+    );
   }
 }

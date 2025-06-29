@@ -13,7 +13,6 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(),
       body: BlocProvider(
         create: (_) => ButtonCubit(),
         child: BlocListener<ButtonCubit, ButtonState>(
@@ -28,21 +27,31 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
             if (state is ButtonStateSuccess) {
               var snackBar = AppSnackBar.show(Text(state.dataSuccess));
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              AppNavigator.pushReplacement(context, const ResetPasswordView());
+              AppNavigator.pushReplacementAndRemove(
+                context,
+                const ResetPasswordView(),
+              );
             }
           },
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 23),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TitleScreen(title: "Forget Password"),
-                const SizedBox(height: 32),
-                _emailField(),
-                const SizedBox(height: 20),
-                _continueButton(context),
-              ],
-            ),
+          child: CustomScrollView(
+            slivers: [
+              BasicAppbar(),
+              SliverFillRemaining(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 23),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TitleScreen(title: "Forget Password"),
+                      const SizedBox(height: 32),
+                      _emailField(),
+                      const SizedBox(height: 20),
+                      _continueButton(context),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

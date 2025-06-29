@@ -1,10 +1,10 @@
 library;
 
 import 'package:ecommerce_app/core/index.dart';
-import 'package:ecommerce_app/presentation/Notification/index.dart';
-import 'package:ecommerce_app/presentation/Profile/index.dart';
-import 'package:ecommerce_app/presentation/Receipt/index.dart';
 import 'package:ecommerce_app/presentation/home/index.dart';
+import 'package:ecommerce_app/presentation/notification/index.dart';
+import 'package:ecommerce_app/presentation/profile/index.dart';
+import 'package:ecommerce_app/presentation/receipt/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -22,3 +22,5 @@ part 'widget/bottom_nav_bar/bottom_nav_bar.dart';
 part 'widget/bottom_nav_bar/custom_bottom_nav_bar.dart';
 part 'widget/button/basic_app_button.dart';
 part 'widget/button/basic_reactive_button.dart';
+part 'widget/empty_notifications_and_orders/empty_notifications_and_orders.dart';
+part 'widget/product_card/product_card.dart';

@@ -19,11 +19,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
 
   void _onTabTapped(int index) {
     setState(() => _currentIndex = index);
-    _pageController.animateTo(
-      index * MediaQuery.of(context).size.width,
-      duration: const Duration(milliseconds: 200),
-      curve: Curves.bounceIn,
-    );
+    _pageController.jumpToPage(index);
   }
 
   @override

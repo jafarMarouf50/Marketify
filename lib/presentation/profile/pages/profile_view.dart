@@ -23,7 +23,7 @@ class ProfileView extends StatelessWidget {
         child: Column(
           children: [
             Spacer(),
-            Center(child: Text("Profile")),
+            Center(child: Text("profile")),
             Spacer(),
             Builder(
               builder: (context) {
