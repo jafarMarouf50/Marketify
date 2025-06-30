@@ -6,7 +6,10 @@ final getIt = GetIt.instance;
 
 Future<void> initializeDependency() async {
   // service
+  // remote
   getIt.registerSingleton<AuthFirebaseService>(AuthFirebaseServiceImp());
+  // local
+  getIt.registerSingleton<AuthLocalService>(AuthLocalServiceImpl());
 
   // repositories
   getIt.registerSingleton<AuthRepository>(AuthRepositoryImpl());

@@ -4,9 +4,11 @@ import 'package:dartz/dartz.dart';
 import 'package:ecommerce_app/core/index.dart';
 import 'package:ecommerce_app/data/auth/index.dart';
 import 'package:ecommerce_app/service_locator.dart';
+import 'package:hive/hive.dart';
 
 //entity
 part './entity/user_entity.dart';
+part './entity/user_entity.g.dart';
 // repository
 part './repositories/auth_repository.dart';
 part './usecases/get_ages.dart';

@@ -27,10 +27,17 @@ class _EnterPasswordViewState extends State<EnterPasswordView> {
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             }
             if (state is ButtonStateSuccess) {
-              AppNavigator.pushReplacementAndRemove(
-                context,
-                const CustomBottomNavBar(),
-              );
+              if (state.dataSuccess == "admin") {
+                AppNavigator.pushReplacementAndRemove(
+                  context,
+                  const AdminHome(),
+                );
+              } else {
+                AppNavigator.pushReplacementAndRemove(
+                  context,
+                  const CustomBottomNavBar(),
+                );
+              }
             }
           },
           child: CustomScrollView(

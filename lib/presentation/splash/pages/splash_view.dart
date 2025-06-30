@@ -1,11 +1,4 @@
-import 'package:ecommerce_app/common/index.dart';
-import 'package:ecommerce_app/core/index.dart';
-import 'package:ecommerce_app/presentation/auth/index.dart';
-import 'package:ecommerce_app/presentation/splash/bloc/splash_cubit.dart';
-import 'package:ecommerce_app/presentation/splash/bloc/splash_state.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+part of '../index.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
@@ -16,11 +9,17 @@ class SplashView extends StatelessWidget {
       listener: (context, state) {
         if (state is UnAuthenticated) {
           AppNavigator.pushReplacementAndRemove(context, const SigninView());
-        } else {
-          AppNavigator.pushReplacementAndRemove(
-            context,
-            const CustomBottomNavBar(),
-          );
+        }
+        if (state is Authenticated) {
+          state.role == 'admin'
+              ? AppNavigator.pushReplacementAndRemove(
+                  context,
+                  const AdminHome(),
+                )
+              : AppNavigator.pushReplacementAndRemove(
+                  context,
+                  const CustomBottomNavBar(),
+                );
         }
       },
       child: Scaffold(

@@ -22,8 +22,11 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
-  Future<bool> isLoggedIn() async {
-    return getIt<AuthFirebaseService>().isLoggedIn();
+  Future<String> isLoggedIn() async {
+    if (getIt<AuthLocalService>().isLoggedIn() != '') {
+      return getIt<AuthLocalService>().isLoggedIn();
+    }
+    return await getIt<AuthFirebaseService>().isLoggedIn();
   }
 
   @override

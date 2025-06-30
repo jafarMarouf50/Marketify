@@ -1,5 +1,7 @@
 library;
 
+import 'dart:developer';
+
 import 'package:ecommerce_app/core/index.dart';
 import 'package:ecommerce_app/presentation/home/index.dart';
 import 'package:ecommerce_app/presentation/notification/index.dart';
@@ -8,11 +10,14 @@ import 'package:ecommerce_app/presentation/receipt/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hive/hive.dart';
 
 //bloc
 part './bloc/button/button_cubit.dart';
 part './bloc/button/button_state.dart';
 part 'helper/bottomsheet/app_bottomsheet.dart';
+part 'helper/functions/paresToUserEntity.dart';
+part 'helper/functions/saveDataInLocalDB.dart';
 // helpers
 part 'helper/navigator/app_navigator.dart';
 part 'helper/snackbar/snackbar.dart';

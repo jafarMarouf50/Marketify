@@ -7,6 +7,7 @@ class CreateUserRequest {
   String? password;
   String? age;
   int? gender;
+  String? role;
 
   CreateUserRequest({
     required this.firstName,
@@ -15,5 +16,6 @@ class CreateUserRequest {
     required this.password,
     required this.gender,
     required this.age,
+    required this.role,
   });
 }

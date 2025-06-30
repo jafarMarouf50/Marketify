@@ -9,7 +9,7 @@ abstract class AuthRepository {
 
   Future<Either> resetPassword(String email);
 
-  Future<bool> isLoggedIn();
+  Future<String> isLoggedIn();
 
   Future<Either> getCurrentUser();
 

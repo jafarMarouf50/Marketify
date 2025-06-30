@@ -9,7 +9,7 @@ abstract class AuthFirebaseService {
 
   Future<Either> resetPassword(String email);
 
-  Future<bool> isLoggedIn();
+  Future<String> isLoggedIn();
 
   Future<Either> getUser();
 
@@ -34,6 +34,7 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
         'email': request.email,
         'gender': request.gender,
         'age': request.age,
+        'role': request.role,
       });
       return Right("Account User created Successfully!");
     } on FirebaseAuthException catch (e) {
@@ -54,11 +55,16 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
   @override
   Future<Either> signin(LoginUserRequest request) async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: request.email!,
-        password: request.password!,
-      );
-      return Right("Sign in Successfully!");
+      UserCredential credential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+            email: request.email!,
+            password: request.password!,
+          );
+      var userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(credential.user!.uid)
+          .get();
+      return Right(userDoc['role']);
     } on FirebaseAuthException catch (e) {
       String message = '';
       if (e.code == 'bloc-not-found') {
@@ -105,11 +111,19 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
   }
 
   @override
-  Future<bool> isLoggedIn() async {
+  Future<String> isLoggedIn() async {
     if (FirebaseAuth.instance.currentUser == null) {
-      return false;
+      return '';
     } else {
-      return true;
+      String uuid = FirebaseAuth.instance.currentUser!.uid;
+      var data = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uuid)
+          .get()
+          .then((value) => value.data());
+      var userEntity = UserModel.fromMap(data!).toEntity();
+      saveData(userEntity, AppConstants.kUserBox);
+      return userEntity.role;
     }
   }
 
@@ -133,6 +147,8 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
   @override
   Future<Either> signOut() async {
     try {
+      var box = Hive.box<UserEntity>(AppConstants.kUserBox);
+      box.clear();
       await FirebaseAuth.instance.signOut();
       return Right("Sign out Successfully!");
     } on FirebaseAuthException catch (e) {

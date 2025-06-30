@@ -87,6 +87,7 @@ class _SignupViewState extends State<SignupView> {
               password: _passwordController.text,
               gender: null,
               age: null,
+              role: 'customer',
             ),
           ),
         );

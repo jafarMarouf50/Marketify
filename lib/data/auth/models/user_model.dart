@@ -7,6 +7,7 @@ class UserModel {
   final String email;
   final String image;
   final int gender;
+  final String role;
 
   UserModel({
     required this.userId,
@@ -15,6 +16,7 @@ class UserModel {
     required this.email,
     required this.image,
     required this.gender,
+    required this.role,
   });
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
@@ -25,6 +27,7 @@ class UserModel {
       email: map['email'] as String,
       image: map['image'] ?? '',
       gender: map['gender'] as int,
+      role: map['role'] as String,
     );
   }
 
@@ -36,6 +39,7 @@ class UserModel {
       'email': email,
       'image': image,
       'gender': gender,
+      'role': role,
     };
   }
 
@@ -54,6 +58,7 @@ extension UserXModel on UserModel {
       email: email,
       image: image,
       gender: gender,
+      role: role,
     );
   }
 }
