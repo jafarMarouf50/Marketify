@@ -23,23 +23,26 @@ class AuthRepositoryImpl extends AuthRepository {
 
   @override
   Future<String> isLoggedIn() async {
-    if (getIt<AuthLocalService>().isLoggedIn() != '') {
-      return getIt<AuthLocalService>().isLoggedIn();
-    }
-    return await getIt<AuthFirebaseService>().isLoggedIn();
+    return getIt<AuthLocalService>().isLoggedIn() != ''
+        ? getIt<AuthLocalService>().isLoggedIn()
+        : await getIt<AuthFirebaseService>().isLoggedIn();
   }
 
   @override
   Future<Either> getCurrentUser() async {
-    var data = await getIt<AuthFirebaseService>().getUser();
-    return data.fold(
-      (error) {
-        return Left(error);
-      },
-      (user) {
-        return Right(UserModel.fromMap(user).toEntity());
-      },
-    );
+    try {
+      final localUser = getIt<AuthLocalService>().getUser();
+
+      if (localUser != null) {
+        return Right(localUser);
+      }
+
+      final remoteResult = await getIt<AuthFirebaseService>().getUser();
+
+      return remoteResult.fold((error) => Left(error), (user) => Right(user));
+    } catch (e) {
+      return Left("Error getting current user: ${e.toString()}");
+    }
   }
 
   @override

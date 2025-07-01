@@ -3,14 +3,27 @@ part of '../index.dart';
 abstract class AuthLocalService {
   String isLoggedIn();
 
-  Either getUser();
+  UserEntity? getUser();
 }
 
 class AuthLocalServiceImpl extends AuthLocalService {
+  static const String _lastUpdatedKey = 'user_last_updated';
+  static const int _cacheExpirationHours = 24;
+
   @override
-  Either getUser() {
-    // TODO: implement getUser
-    throw UnimplementedError();
+  UserEntity? getUser() {
+    try {
+      var box = Hive.box<UserEntity>(AppConstants.kUserBox);
+      if (box.values.isEmpty) return null;
+
+      // Check if cache is still valid
+      if (isCacheExpired(_lastUpdatedKey, _cacheExpirationHours)) {
+        return null;
+      }
+      return box.values.first;
+    } catch (e) {
+      return null;
+    }
   }
 
   @override

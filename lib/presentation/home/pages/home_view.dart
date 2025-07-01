@@ -59,33 +59,36 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: Column(
-              children: [
-                const Header(),
-                const SizedBox(height: 24),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24.0),
-                  child: SearchFiled(),
-                ),
-                const SizedBox(height: 24),
-                Categories(categories: categories),
-                const SizedBox(height: 24),
-                FilteredProductsSection(
-                  titleFilter: 'Top Selling',
-                  products: products,
-                ),
-                SizedBox(height: 24),
-                FilteredProductsSection(
-                  titleFilter: "New In",
-                  products: products,
-                ),
-              ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12.0),
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  const Header(),
+                  const SizedBox(height: 24),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24.0),
+                    child: SearchFiled(),
+                  ),
+                  const SizedBox(height: 24),
+                  Categories(categories: categories),
+                  const SizedBox(height: 24),
+                  FilteredProductsSection(
+                    titleFilter: 'Top Selling',
+                    products: products,
+                  ),
+                  SizedBox(height: 24),
+                  FilteredProductsSection(
+                    titleFilter: "New In",
+                    products: products,
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -17,6 +17,8 @@ abstract class AuthFirebaseService {
 }
 
 class AuthFirebaseServiceImp extends AuthFirebaseService {
+  static const String _lastUpdatedKey = 'user_last_updated';
+
   @override
   Future<Either> signup(CreateUserRequest request) async {
     try {
@@ -114,45 +116,51 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
   Future<String> isLoggedIn() async {
     if (FirebaseAuth.instance.currentUser == null) {
       return '';
-    } else {
-      String uuid = FirebaseAuth.instance.currentUser!.uid;
-      var data = await FirebaseFirestore.instance
-          .collection('users')
-          .doc(uuid)
-          .get()
-          .then((value) => value.data());
-      var userEntity = UserModel.fromMap(data!).toEntity();
-      saveData(userEntity, AppConstants.kUserBox);
-      return userEntity.role;
     }
+    String uuid = FirebaseAuth.instance.currentUser!.uid;
+    var data = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uuid)
+        .get()
+        .then((value) => value.data());
+    var userEntity = UserModel.fromMap(data!).toEntity();
+    saveData(userEntity, AppConstants.kUserBox, _lastUpdatedKey);
+    return userEntity.role;
   }
 
   @override
   Future<Either> getUser() async {
     try {
       var authUser = FirebaseAuth.instance.currentUser;
+      if (authUser == null) {
+        return const Left("No authenticated user found");
+      }
       var currentUserData = await FirebaseFirestore.instance
           .collection("users")
-          .doc(authUser?.uid)
+          .doc(authUser.uid)
           .get()
           .then((value) => value.data());
-      return Right(currentUserData);
+      if (currentUserData == null) {
+        return const Left("User data not found in Firestore");
+      }
+      var userEntity = UserModel.fromMap(currentUserData).toEntity();
+      saveData(userEntity, AppConstants.kUserBox, _lastUpdatedKey);
+      return Right(userEntity);
     } on FirebaseAuthException catch (e) {
-      return Left("Failed with error code: ${e.code}");
+      return Left("Firebase Auth error: ${e.code} - ${e.message}");
     } catch (e) {
-      return Left("Something was wrong!, ${e.toString()}");
+      return Left("Failed to fetch user: ${e.toString()}");
     }
   }
 
   @override
   Future<Either> signOut() async {
     try {
-      var box = Hive.box<UserEntity>(AppConstants.kUserBox);
-      box.clear();
+      await clearAllLocalData();
       await FirebaseAuth.instance.signOut();
       return Right("Sign out Successfully!");
     } on FirebaseAuthException catch (e) {
-      return Left("Failed with error code: ${e.code}");
+      return Left("Error during sign out: ${e.code}");
     } catch (e) {
       return Left("Something was wrong!, ${e.toString()}");
     }
