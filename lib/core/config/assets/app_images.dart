@@ -31,18 +31,15 @@ class AppImages {
   static const String vectorsSearch = "$basePathVectors/search.svg";
 
   static const String vectorsArrowDown = "$basePathVectors/arrow-down.svg";
-
-  static const String vectorsUnselectedHome =
-      '$basePathVectors/unselected_home.svg';
-
-  static const String vectorsUnSelectedProfile2 =
-      "$basePathVectors/unselected_profile2.svg";
-
-  static const String vectorsUnSelectedNotification =
-      "$basePathVectors/unselected_notification.svg";
-
-  static const String vectorsUnSelectedReceipt =
-      "$basePathVectors/unselected_receipt.svg";
-  static const String vectorsHeart = '$basePathVectors/heart.svg';
   static const String vectorsArrowLeft = '$basePathVectors/arrow-left.svg';
+  static const String vectorsArrowRight = '$basePathVectors/arrow-right.svg';
+
+  static const String vectorsHome = '$basePathVectors/home.svg';
+
+  static const String vectorsProfile2 = "$basePathVectors/profile2.svg";
+
+  static const String vectorsNotification = "$basePathVectors/notification.svg";
+
+  static const String vectorsReceipt = "$basePathVectors/receipt.svg";
+  static const String vectorsHeart = '$basePathVectors/heart.svg';
 }

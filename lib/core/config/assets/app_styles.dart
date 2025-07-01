@@ -25,8 +25,12 @@ abstract class AppStyles {
     return const TextStyle(fontSize: 16, fontWeight: FontWeight.w500);
   }
 
+  static TextStyle styleBold12(BuildContext context) {
+    return const TextStyle(fontSize: 12, fontWeight: FontWeight.w700);
+  }
+
   static TextStyle styleBold16(BuildContext context) {
-    return const TextStyle(fontSize: 16, fontWeight: FontWeight.bold);
+    return const TextStyle(fontSize: 16, fontWeight: FontWeight.w700);
   }
 
   static TextStyle styleMedium20(BuildContext context) {

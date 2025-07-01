@@ -14,7 +14,7 @@ import 'package:hive/hive.dart';
 //datasource
 part './datasource/auth_firebase_service.dart';
 part './datasource/auth_local_service.dart';
-// models
+// entity
 part './models/create_user_request.dart';
 part './models/login_user_request.dart';
 part './models/user_model.dart';

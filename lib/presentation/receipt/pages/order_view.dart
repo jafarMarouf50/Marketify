@@ -8,13 +8,16 @@ class ReceiptView extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         BasicAppbar(hideBack: true, title: Text("Orders")),
-        EmptyNotificationsAndOrders(
-          subtitle: "No Orders yet",
-          image: AppImages.imagesCheckOut,
-          onPressed: () {},
-          buttonTitle: "Explore Categories",
-        ),
+        const SliverToBoxAdapter(child: OrderStatusTabs()),
+        const SliverOrdersList(),
       ],
     );
   }
 }
+
+// EmptyNotificationsAndOrders(
+//   subtitle: "No Orders yet",
+//   image: AppImages.imagesCheckOut,
+//   onPressed: () {},
+//   buttonTitle: "Explore Categories",
+// ),

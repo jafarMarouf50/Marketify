@@ -8,7 +8,7 @@ class AllNotifications extends StatelessWidget {
     return SliverPadding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
       sliver: SliverList.separated(
-        itemCount: 26,
+        itemCount: 6,
         separatorBuilder: (context, index) => const SizedBox(height: 8),
         itemBuilder: (context, index) => _buildNotificationCard(
           context,
@@ -52,7 +52,7 @@ class AllNotifications extends StatelessWidget {
           height: 24,
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
           child: SvgPicture.asset(
-            AppImages.vectorsUnSelectedNotification,
+            AppImages.vectorsNotification,
             colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
           ),
         ),
