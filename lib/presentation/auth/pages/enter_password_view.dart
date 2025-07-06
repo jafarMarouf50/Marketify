@@ -15,6 +15,7 @@ class _EnterPasswordViewState extends State<EnterPasswordView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: BasicAppbar(),
       body: BlocProvider(
         create: (context) => ButtonCubit(),
         child: BlocListener<ButtonCubit, ButtonState>(
@@ -42,8 +43,7 @@ class _EnterPasswordViewState extends State<EnterPasswordView> {
           },
           child: CustomScrollView(
             slivers: [
-              BasicAppbar(),
-              SliverFillRemaining(
+              SliverToBoxAdapter(
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 23),
                   child: Column(

@@ -5,11 +5,16 @@ class NotificationView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
-      slivers: [
-        BasicAppbar(hideBack: true, title: Text("Notifications")),
-        AllNotifications(),
-      ],
+    return Scaffold(
+      appBar: BasicAppbar(hideBack: true, title: Text("Notifications")),
+      body: const CustomScrollView(slivers: [AllNotifications()]),
     );
   }
 }
+
+// EmptyNotificationsAndOrders(
+// subtitle: "No Notifications yet",
+// image: AppImages.imagesBell,
+// onPressed: () {},
+// buttonTitle: "Explore Categories",
+// ),

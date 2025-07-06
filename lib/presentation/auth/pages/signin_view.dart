@@ -13,10 +13,10 @@ class _SigninViewState extends State<SigninView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: BasicAppbar(hideBack: true),
       body: CustomScrollView(
         slivers: [
-          BasicAppbar(hideBack: true),
-          SliverFillRemaining(
+          SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 23),
               child: Column(

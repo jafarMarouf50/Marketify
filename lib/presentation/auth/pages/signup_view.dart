@@ -19,10 +19,10 @@ class _SignupViewState extends State<SignupView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: BasicAppbar(),
       body: CustomScrollView(
         slivers: [
-          BasicAppbar(),
-          SliverFillRemaining(
+          SliverToBoxAdapter(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 23),
               child: SingleChildScrollView(

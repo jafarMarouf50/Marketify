@@ -6,6 +6,7 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
   final Color? backgroundColor;
   final bool hideBack;
   final double? height;
+  final EdgeInsetsGeometry? actionsPadding;
 
   const BasicAppbar({
     this.title,
@@ -13,6 +14,7 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
     this.action,
     this.backgroundColor,
     this.height,
+    this.actionsPadding,
     super.key,
   });
 
@@ -22,8 +24,8 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
       context,
     ).extension<BoxDecorationTheme>();
 
-    return SliverAppBar(
-      pinned: false,
+    return AppBar(
+      actionsPadding: actionsPadding ?? EdgeInsets.zero,
       backgroundColor: backgroundColor ?? Colors.transparent,
       elevation: 0,
       centerTitle: true,

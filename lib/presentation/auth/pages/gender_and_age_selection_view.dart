@@ -8,6 +8,7 @@ class GenderAndAgeSelectionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: BasicAppbar(),
       body: MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => GenderSelectionCubit()),
@@ -33,8 +34,7 @@ class GenderAndAgeSelectionView extends StatelessWidget {
           },
           child: CustomScrollView(
             slivers: [
-              BasicAppbar(),
-              SliverFillRemaining(
+              SliverToBoxAdapter(
                 child: Column(
                   children: [
                     Padding(

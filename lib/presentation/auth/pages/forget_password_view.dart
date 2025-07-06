@@ -13,6 +13,8 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: BasicAppbar(),
+
       body: BlocProvider(
         create: (_) => ButtonCubit(),
         child: BlocListener<ButtonCubit, ButtonState>(
@@ -35,8 +37,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
           },
           child: CustomScrollView(
             slivers: [
-              BasicAppbar(),
-              SliverFillRemaining(
+              SliverToBoxAdapter(
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 23),
                   child: Column(

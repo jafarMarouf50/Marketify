@@ -1,7 +1,7 @@
 part of '../../index.dart';
 
 class ProductCard extends StatelessWidget {
-  final Map<String, dynamic> product;
+  final ProductEntity product;
 
   const ProductCard({super.key, required this.product});
 
@@ -29,7 +29,7 @@ class ProductCard extends StatelessWidget {
                     ),
                     image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: AssetImage(product['image']),
+                      image: AssetImage(product.imageUrl[0]),
                     ),
                   ),
                 ),
@@ -49,7 +49,7 @@ class ProductCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    product['title'],
+                    product.title,
                     style: const TextStyle(
                       fontSize: 12,
                       overflow: TextOverflow.ellipsis,
@@ -59,7 +59,7 @@ class ProductCard extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        product['price'].toString(),
+                        product.price.toString(),
                         style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w300,

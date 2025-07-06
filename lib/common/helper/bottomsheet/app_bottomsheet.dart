@@ -1,8 +1,8 @@
 part of '../../index.dart';
 
 class AppBottomSheet {
-  static Future<void> display(BuildContext context, Widget widget) async {
-    return await showModalBottomSheet(
+  static Future<T?> display<T>(BuildContext context, Widget widget) async {
+    return await showModalBottomSheet<T>(
       context: context,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(

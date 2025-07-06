@@ -2,7 +2,7 @@ part of '../index.dart';
 
 class FilteredProductsSection extends StatelessWidget {
   final String titleFilter;
-  final List<Map<String, dynamic>> products;
+  final List<ProductEntity> products;
 
   const FilteredProductsSection({
     super.key,

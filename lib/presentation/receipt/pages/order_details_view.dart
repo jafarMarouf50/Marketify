@@ -8,10 +8,10 @@ class OrderDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: BasicAppbar(title: Text("Order ${orderData.orderNumber}")),
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
-            BasicAppbar(title: Text("Order ${orderData.orderNumber}")),
             SliverPadding(
               padding: EdgeInsets.symmetric(horizontal: 24),
               sliver: SliverFillRemaining(

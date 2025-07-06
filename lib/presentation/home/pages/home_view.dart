@@ -8,53 +8,9 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  final List<Map<String, String>> categories = [
-    {"title": "Hoodies", "image": AppImages.imagesHoodies},
-    {"title": "Jackets", "image": AppImages.imagesHoodies},
-    {"title": "T-Shirts", "image": AppImages.imagesHoodies},
-    {"title": "Pants", "image": AppImages.imagesHoodies},
-    {"title": "Hats", "image": AppImages.imagesHoodies},
-    {"title": "Accessories", "image": AppImages.imagesHoodies},
-  ];
+  final List<CategoryEntity> categories = CategoryDataRepository.categories();
 
-  final List<Map<String, dynamic>> products = [
-    {
-      "title": "Men's Harrington Jacket",
-      "price": 148.00,
-      "oldPrice": null,
-      "image": AppImages.imagesFleeceSkateHoodie,
-    },
-    {
-      "title": "Max Cirro Men's Slides",
-      "price": 55.00,
-      "oldPrice": 100.97,
-      "image": AppImages.imagesFleecePulloverHoodie,
-    },
-    {
-      "title": "Men's Harrington Jacket",
-      "price": 148.00,
-      "oldPrice": null,
-      "image": AppImages.imagesFleeceSkateHoodie,
-    },
-    {
-      "title": "Max Cirro Men's Slides",
-      "price": 55.00,
-      "oldPrice": 100.97,
-      "image": AppImages.imagesFleecePulloverHoodie,
-    },
-    {
-      "title": "Men's Harrington Jacket",
-      "price": 148.00,
-      "oldPrice": null,
-      "image": AppImages.imagesFleeceSkateHoodie,
-    },
-    {
-      "title": "Max Cirro Men's Slides",
-      "price": 55.00,
-      "oldPrice": 100.97,
-      "image": AppImages.imagesFleecePulloverHoodie,
-    },
-  ];
+  final List<ProductEntity> products = ProductDataRepository.products();
 
   @override
   Widget build(BuildContext context) {
@@ -68,9 +24,11 @@ class _HomeViewState extends State<HomeView> {
                 children: [
                   const Header(),
                   const SizedBox(height: 24),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24.0),
-                    child: SearchFiled(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: SearchFiled(
+                      onTap: () => AppNavigator.push(context, SearchView()),
+                    ),
                   ),
                   const SizedBox(height: 24),
                   Categories(categories: categories),

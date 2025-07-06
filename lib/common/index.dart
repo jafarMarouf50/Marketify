@@ -2,6 +2,7 @@ library;
 
 import 'package:ecommerce_app/core/index.dart';
 import 'package:ecommerce_app/domain/auth/index.dart';
+import 'package:ecommerce_app/domain/product/index.dart';
 import 'package:ecommerce_app/presentation/home/index.dart';
 import 'package:ecommerce_app/presentation/notification/index.dart';
 import 'package:ecommerce_app/presentation/profile/index.dart';

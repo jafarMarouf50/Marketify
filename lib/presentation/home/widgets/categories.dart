@@ -1,7 +1,7 @@
 part of '../index.dart';
 
 class Categories extends StatelessWidget {
-  final List<Map<String, dynamic>> categories;
+  final List<CategoryEntity> categories;
 
   const Categories({super.key, required this.categories});
 
@@ -53,13 +53,13 @@ class Categories extends StatelessWidget {
                       color: Colors.white,
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage(categories[index]['image']),
+                        image: AssetImage(categories[index].image),
                       ),
                     ),
                   ),
                 ),
                 Text(
-                  categories[index]['title'],
+                  categories[index].title,
                   style: AppStyles.styleRegular14(context),
                 ),
               ],

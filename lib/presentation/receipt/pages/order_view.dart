@@ -5,12 +5,14 @@ class ReceiptView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        BasicAppbar(hideBack: true, title: Text("Orders")),
-        const SliverToBoxAdapter(child: OrderStatusTabs()),
-        const SliverOrdersList(),
-      ],
+    return Scaffold(
+      appBar: BasicAppbar(hideBack: true, title: Text("Orders")),
+      body: CustomScrollView(
+        slivers: [
+          const SliverToBoxAdapter(child: OrderStatusTabs()),
+          const SliverOrdersList(),
+        ],
+      ),
     );
   }
 }

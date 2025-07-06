@@ -27,6 +27,10 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: AppTheme.darkTheme,
         home: SplashView(),
+        // home: BlocProvider(
+        //   create: (context) => FilterCubit(),
+        //   child: const HomePage(),
+        // ),
       ),
     );
   }
