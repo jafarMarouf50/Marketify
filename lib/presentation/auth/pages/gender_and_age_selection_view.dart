@@ -34,7 +34,7 @@ class GenderAndAgeSelectionView extends StatelessWidget {
           },
           child: CustomScrollView(
             slivers: [
-              SliverToBoxAdapter(
+              SliverFillRemaining(
                 child: Column(
                   children: [
                     Padding(

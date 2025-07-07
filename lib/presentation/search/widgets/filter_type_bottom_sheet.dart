@@ -28,15 +28,42 @@ class FilterTypeBottomSheet extends StatelessWidget {
   Widget _buildBottomSheetContent(String filterType, String currentValue) {
     switch (filterType) {
       case 'Sort by':
-        return BuildSortByBottomSheet(currentValue: currentValue);
+        return ReusableOptionBottomSheet(
+          initialValue: currentValue,
+          options: [
+            'All',
+            'Recommended',
+            'Newest',
+            'Lowest-Highest Price',
+            'Highest-Lowest Price',
+          ],
+        );
       case 'Price':
-        return BuildPriceBottomSheet(currentValue: currentValue);
+        return ReusableOptionBottomSheet(
+          initialValue: currentValue,
+          options: ['Min', 'Max'],
+        );
       case 'On Sale':
-        return BuildOnSaleBottomSheet(currentValue: currentValue);
+        return ReusableOptionBottomSheet(
+          initialValue: currentValue,
+          options: ['On Sale', '"Free Shipping Eligible"'],
+        );
       case 'Gender':
-        return BuildGenderBottomSheet(currentValue: currentValue);
+        return ReusableOptionBottomSheet(
+          initialValue: currentValue,
+          options: ['Men', 'Women', 'Kids'],
+        );
       default:
-        return BuildSortByBottomSheet(currentValue: currentValue);
+        return ReusableOptionBottomSheet(
+          initialValue: currentValue,
+          options: [
+            'All',
+            'Recommended',
+            'Newest',
+            'Lowest-Highest Price',
+            'Highest-Lowest Price',
+          ],
+        );
     }
   }
 

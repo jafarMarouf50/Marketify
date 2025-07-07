@@ -1,14 +1,9 @@
 part of '../index.dart';
 
-class SearchView extends StatefulWidget {
+class SearchView extends StatelessWidget {
   const SearchView({super.key});
 
-  @override
-  State<SearchView> createState() => _SearchViewState();
-}
-
-class _SearchViewState extends State<SearchView> {
-  final List<ProductEntity> products = ProductDataRepository.products();
+  List<ProductEntity> get _products => ProductDataRepository.products();
 
   static const double horizontalPadding = 24.0;
 
@@ -24,32 +19,32 @@ class _SearchViewState extends State<SearchView> {
           child: const SearchFiled(isReadOnly: false),
         ),
       ),
-      body: CustomScrollView(slivers: _buildSlivers()),
+      body: CustomScrollView(slivers: _buildSlivers(context)),
     );
   }
 
-  List<Widget> _buildSlivers() {
+  List<Widget> _buildSlivers(BuildContext context) {
     return [
       const SliverToBoxAdapter(child: SizedBox(height: 16)),
       const SliverToBoxAdapter(child: FilterSection()),
       const SliverToBoxAdapter(child: SizedBox(height: 17)),
-      SliverToBoxAdapter(child: _buildResultsHeader()),
+      SliverToBoxAdapter(child: _buildResultsHeader(context)),
       const SliverToBoxAdapter(child: SizedBox(height: 16)),
       SliverPadding(
         padding: const EdgeInsets.symmetric(horizontal: horizontalPadding),
-        sliver: ProductsGridView(products: products),
+        sliver: ProductsGridView(products: _products),
       ),
       const SliverToBoxAdapter(child: SizedBox(height: 34)),
     ];
   }
 
-  Widget _buildResultsHeader() {
+  Widget _buildResultsHeader(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: horizontalPadding),
       child: Align(
         alignment: Alignment.centerLeft,
         child: Text(
-          '${products.length} Results Found',
+          '${_products.length} Results Found',
           style: AppStyles.styleMedium14(context),
         ),
       ),
