@@ -17,9 +17,9 @@ class OrderView extends StatelessWidget {
   }
 }
 
-// EmptyNotificationsAndOrders(
-//   subtitle: "No Orders yet",
-//   image: AppImages.imagesCheckOut,
-//   onPressed: () {},
-//   buttonTitle: "Explore Categories",
+// EmptyScreen(
+// subtitle: "Your Cart is Empty",
+// image: SvgPicture.asset(AppImages.vectorsCartBag),
+// onPressed: () {},
+// buttonTitle: 'Explore Categories',
 // ),

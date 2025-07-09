@@ -1,12 +1,12 @@
 part of '../../index.dart';
 
-class EmptyNotificationsAndOrders extends StatelessWidget {
+class EmptyScreen extends StatelessWidget {
   final String subtitle;
-  final String image;
+  final Widget image;
   final VoidCallback onPressed;
   final String buttonTitle;
 
-  const EmptyNotificationsAndOrders({
+  const EmptyScreen({
     super.key,
     required this.subtitle,
     required this.image,
@@ -16,11 +16,11 @@ class EmptyNotificationsAndOrders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverFillRemaining(
+    return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(image),
+          image,
           const SizedBox(height: 24),
           Text(subtitle, style: AppStyles.styleBold24(context)),
           const SizedBox(height: 24),

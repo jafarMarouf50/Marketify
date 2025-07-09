@@ -15,7 +15,9 @@ class AddToBagButton extends StatelessWidget {
       right: 0,
       child: BasicAppButton(
         height: 52,
-        onPressed: () {},
+        onPressed: () {
+          AppNavigator.push(context, const CartView());
+        },
         content: Row(
           children: [
             Text(

@@ -34,7 +34,7 @@ part 'widget/bottom_nav_bar/bottom_nav_bar.dart';
 part 'widget/bottom_nav_bar/custom_bottom_nav_bar.dart';
 part 'widget/button/basic_app_button.dart';
 part 'widget/button/basic_reactive_button.dart';
-part 'widget/empty_notifications_and_orders/empty_notifications_and_orders.dart';
+part 'widget/empty_screen/empty_screen.dart';
 part 'widget/filter_type_bottom_sheet/build_bottom_sheet_option.dart';
 part 'widget/filter_type_bottom_sheet/filter_type_bottom_sheet.dart';
 part 'widget/filter_type_bottom_sheet/option_selector_view.dart';
