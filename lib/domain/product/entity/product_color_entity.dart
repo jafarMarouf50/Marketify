@@ -2,7 +2,7 @@ part of '../index.dart';
 
 class ProductColorEntity {
   final String title;
-  final String hexColor;
+  final List<int> rgb;
 
-  ProductColorEntity({required this.title, required this.hexColor});
+  ProductColorEntity({required this.title, required this.rgb});
 }

@@ -1,7 +1,7 @@
 part of '../index.dart';
 
-class ReceiptView extends StatelessWidget {
-  const ReceiptView({super.key});
+class OrderView extends StatelessWidget {
+  const OrderView({super.key});
 
   @override
   Widget build(BuildContext context) {

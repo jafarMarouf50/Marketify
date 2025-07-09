@@ -28,7 +28,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     super.dispose();
   }
 
-  final _pages = [HomeView(), NotificationView(), ReceiptView(), ProfileView()];
+  final _pages = [HomeView(), NotificationView(), OrderView(), ProfileView()];
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,7 @@ class ProductEntity {
   final String productId;
   final String title;
   final double price;
-  final List<String> imageUrl;
+  final List<String> imageUrls;
   final int gender;
   final String categoryId;
   final List<ProductColorEntity> colors;
@@ -18,7 +18,7 @@ class ProductEntity {
     required this.productId,
     required this.title,
     required this.price,
-    required this.imageUrl,
+    required this.imageUrls,
     required this.gender,
     required this.categoryId,
     required this.colors,

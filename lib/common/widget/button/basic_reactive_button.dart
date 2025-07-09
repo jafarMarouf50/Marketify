@@ -5,6 +5,7 @@ class BasicReactiveButton extends StatelessWidget {
   final String title;
   final double? height;
   final double? width;
+  final Widget? content;
 
   const BasicReactiveButton({
     super.key,
@@ -12,6 +13,7 @@ class BasicReactiveButton extends StatelessWidget {
     this.title = '',
     this.height,
     this.width,
+    this.content,
   });
 
   @override

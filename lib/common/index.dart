@@ -5,16 +5,20 @@ import 'package:ecommerce_app/domain/auth/index.dart';
 import 'package:ecommerce_app/domain/product/index.dart';
 import 'package:ecommerce_app/presentation/home/index.dart';
 import 'package:ecommerce_app/presentation/notification/index.dart';
+import 'package:ecommerce_app/presentation/order/index.dart';
+import 'package:ecommerce_app/presentation/product/index.dart';
 import 'package:ecommerce_app/presentation/profile/index.dart';
-import 'package:ecommerce_app/presentation/receipt/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hive/hive.dart';
 
 //bloc
-part './bloc/button/button_cubit.dart';
-part './bloc/button/button_state.dart';
+part 'bloc/button/button_cubit.dart';
+part 'bloc/button/button_state.dart';
+part 'bloc/filter_type_bottom_sheet/filter_cubit.dart';
+part 'bloc/filter_type_bottom_sheet/filter_state.dart';
+part 'bloc/filter_type_bottom_sheet/option_select_cubit.dart';
 // exceptions
 part 'exceptions/storage_exception.dart';
 part 'helper/bottomsheet/app_bottomsheet.dart';
@@ -31,4 +35,9 @@ part 'widget/bottom_nav_bar/custom_bottom_nav_bar.dart';
 part 'widget/button/basic_app_button.dart';
 part 'widget/button/basic_reactive_button.dart';
 part 'widget/empty_notifications_and_orders/empty_notifications_and_orders.dart';
+part 'widget/filter_type_bottom_sheet/build_bottom_sheet_option.dart';
+part 'widget/filter_type_bottom_sheet/filter_type_bottom_sheet.dart';
+part 'widget/filter_type_bottom_sheet/option_selector_view.dart';
+part 'widget/filter_type_bottom_sheet/reusable_option_bottom_sheet.dart';
 part 'widget/product_card/product_card.dart';
+part 'widget/profile_image/profile_image.dart';

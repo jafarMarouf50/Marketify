@@ -1,16 +1,11 @@
 part of '../index.dart';
 
-class HomeView extends StatefulWidget {
+class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
-  @override
-  State<HomeView> createState() => _HomeViewState();
-}
+  List<CategoryEntity> get _categories => CategoryDataRepository.categories();
 
-class _HomeViewState extends State<HomeView> {
-  final List<CategoryEntity> categories = CategoryDataRepository.categories();
-
-  final List<ProductEntity> products = ProductDataRepository.products();
+  List<ProductEntity> get _products => ProductDataRepository.products();
 
   @override
   Widget build(BuildContext context) {
@@ -31,16 +26,16 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ),
                   const SizedBox(height: 24),
-                  Categories(categories: categories),
+                  Categories(categories: _categories),
                   const SizedBox(height: 24),
                   FilteredProductsSection(
                     titleFilter: 'Top Selling',
-                    products: products,
+                    products: _products,
                   ),
                   SizedBox(height: 24),
                   FilteredProductsSection(
                     titleFilter: "New In",
-                    products: products,
+                    products: _products,
                   ),
                 ],
               ),

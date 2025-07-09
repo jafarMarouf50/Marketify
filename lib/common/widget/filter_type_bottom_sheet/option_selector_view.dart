@@ -1,4 +1,4 @@
-part of '../index.dart';
+part of '../../index.dart';
 
 class OptionSelectorView extends StatelessWidget {
   const OptionSelectorView({super.key});

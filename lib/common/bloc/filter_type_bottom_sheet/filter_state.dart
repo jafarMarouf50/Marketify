@@ -1,4 +1,4 @@
-part of '../index.dart';
+part of '../../index.dart';
 
 class FilterState {
   final Map<String, String> selectedValues;

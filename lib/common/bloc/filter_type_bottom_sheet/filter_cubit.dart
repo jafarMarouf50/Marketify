@@ -1,4 +1,4 @@
-part of '../index.dart';
+part of '../../index.dart';
 
 class FilterCubit extends Cubit<FilterState> {
   FilterCubit()

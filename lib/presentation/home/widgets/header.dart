@@ -18,7 +18,11 @@ class Header extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _profileImage(state.user.image),
+                  ProfileImage(
+                    image: state.user.image != ''
+                        ? state.user.image
+                        : AppImages.imagesProfile,
+                  ),
                   _gender(context, state.user.gender),
                   _card(),
                 ],
@@ -44,20 +48,6 @@ class Header extends StatelessWidget {
       height: 40,
       decoration: BoxDecoration(
         image: DecorationImage(image: AssetImage(AppImages.imagesProfile)),
-        shape: BoxShape.circle,
-        color: AppColorsDark.background,
-      ),
-    );
-  }
-
-  Widget _profileImage(String image) {
-    return Container(
-      width: 40,
-      height: 40,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(image != '' ? image : AppImages.imagesProfile),
-        ),
         shape: BoxShape.circle,
         color: AppColorsDark.background,
       ),

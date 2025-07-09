@@ -1,4 +1,4 @@
-part of '../index.dart';
+part of '../../index.dart';
 
 class FilterTypeBottomSheet extends StatelessWidget {
   final String label;
@@ -38,6 +38,7 @@ class FilterTypeBottomSheet extends StatelessWidget {
             'Highest-Lowest Price',
           ],
         );
+
       case 'Price':
         return ReusableOptionBottomSheet(
           initialValue: currentValue,
@@ -46,7 +47,7 @@ class FilterTypeBottomSheet extends StatelessWidget {
       case 'On Sale':
         return ReusableOptionBottomSheet(
           initialValue: currentValue,
-          options: ['On Sale', '"Free Shipping Eligible"'],
+          options: ['On Sale', 'Free Shipping Eligible'],
         );
       case 'Gender':
         return ReusableOptionBottomSheet(

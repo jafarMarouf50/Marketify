@@ -27,7 +27,7 @@ class EmptyNotificationsAndOrders extends StatelessWidget {
           BasicAppButton(
             onPressed: onPressed,
             title: buttonTitle,
-            style: AppStyles.styleRegular16(
+            textStyle: AppStyles.styleRegular16(
               context,
             ).copyWith(color: Colors.white),
             width: MediaQuery.sizeOf(context).width / 2,
