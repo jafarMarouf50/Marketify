@@ -1,6 +1,5 @@
 library;
 
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/common/index.dart';
 import 'package:ecommerce_app/core/index.dart';
@@ -11,8 +10,6 @@ import 'package:ecommerce_app/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-
-//bloc
 
 part './bloc/age_selection_cubit.dart';
 part './bloc/gender_selection_cubit.dart';
@@ -30,4 +27,8 @@ part './widgets/ages.dart';
 /// widgets
 part './widgets/auth_prompt.dart';
 part './widgets/custom_text_field.dart';
-part './widgets/gender_tile.dart';part './widgets/title_screen.dart';
+part './widgets/gender_tile.dart';
+part './widgets/title_screen.dart';
+//bloc
+part 'bloc/signin/signin_email_cubit.dart';
+part 'bloc/signin/signin_email_state.dart';
