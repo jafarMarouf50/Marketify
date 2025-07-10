@@ -24,6 +24,7 @@ part 'exceptions/storage_exception.dart';
 part 'helper/bottomsheet/app_bottomsheet.dart';
 part 'helper/functions/clear_all_local_data.dart';
 part 'helper/functions/is_cache_expired.dart';
+part 'helper/functions/password_strength.dart';
 part 'helper/functions/save_data_in_local_db.dart';
 // helpers
 part 'helper/navigator/app_navigator.dart';

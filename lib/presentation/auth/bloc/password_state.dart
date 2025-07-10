@@ -1,7 +1,5 @@
 part of '../index.dart';
 
-enum PasswordStrength { none, weak, medium, strong }
-
 class PasswordState {
   final String password;
   final bool isPasswordVisible;

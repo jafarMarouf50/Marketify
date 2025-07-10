@@ -20,6 +20,8 @@ part 'bloc/get_ages_cubit.dart';
 part 'bloc/get_ages_state.dart';
 part 'bloc/password_cubit.dart';
 part 'bloc/password_state.dart';
+part 'bloc/signup_cubit.dart';
+part 'bloc/signup_state.dart';
 /// pages
 part 'pages/enter_email_view.dart';
 part 'pages/enter_password_view.dart';

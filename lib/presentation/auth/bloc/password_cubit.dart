@@ -11,48 +11,20 @@ class PasswordCubit extends Cubit<PasswordState> {
 
   void _onPasswordChanged() {
     final newPassword = passwordController.text;
-    PasswordStrength newStrength = _checkPasswordStrength(newPassword);
-    String? newErrorMessage;
-    if (!state.forceClearError &&
-        newPassword.isNotEmpty &&
-        newPassword.length < minPasswordLength) {
-      newErrorMessage = null;
-    } else {
-      newErrorMessage =
-          "Password must be at least $minPasswordLength characters.";
-    }
+    bool isValidLength = newPassword.length >= minPasswordLength;
+
     emit(
       state.copyWith(
         password: newPassword,
-        strength: newStrength,
-        errorMessage: newErrorMessage,
+        strength: isValidLength
+            ? PasswordStrength.strong
+            : PasswordStrength.none,
+        errorMessage: isValidLength
+            ? null
+            : "Password must be at least $minPasswordLength characters.",
         forceClearError: false,
       ),
     );
-  }
-
-  PasswordStrength _checkPasswordStrength(String password) {
-    if (password.isEmpty) return PasswordStrength.none;
-
-    bool hasUppercase = password.contains(RegExp(r'[A-Z]'));
-    bool hasLowercase = password.contains(RegExp(r'[a-z]'));
-    bool hasDigits = password.contains(RegExp(r'[0-9]'));
-    bool hasSpecialCharacters = password.contains(
-      RegExp(r'[!@#$%^&*(),.?":{}|<>]'),
-    );
-    int length = password.length;
-
-    int score = 0;
-    if (length >= minPasswordLength) score++;
-    if (length >= 10) score++;
-    if (hasUppercase) score++;
-    if (hasLowercase) score++;
-    if (hasDigits) score++;
-    if (hasSpecialCharacters) score++;
-
-    if (score >= 5) return PasswordStrength.strong;
-    if (score >= 3) return PasswordStrength.medium;
-    return PasswordStrength.weak;
   }
 
   void togglePasswordVisibility() {
@@ -61,15 +33,6 @@ class PasswordCubit extends Cubit<PasswordState> {
 
   bool validatePassword() {
     final password = state.password;
-    if (password.isEmpty) {
-      emit(
-        state.copyWith(
-          errorMessage: "Password cannot be empty.",
-          forceClearError: false,
-        ),
-      );
-      return false;
-    }
     if (password.length < minPasswordLength) {
       emit(
         state.copyWith(

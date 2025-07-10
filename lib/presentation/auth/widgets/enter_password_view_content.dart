@@ -47,8 +47,6 @@ class EnterPasswordViewContent extends StatelessWidget {
                     ),
                     const SizedBox(height: 32),
                     _passwordField(context),
-                    const SizedBox(height: 8),
-                    PasswordStrengthIndicator(),
                     const SizedBox(height: 20),
                     _finishButton(context),
                     const SizedBox(height: 20),
