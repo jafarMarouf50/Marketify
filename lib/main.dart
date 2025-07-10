@@ -1,6 +1,5 @@
 import 'package:ecommerce_app/bloc_observer.dart';
 import 'package:ecommerce_app/core/index.dart';
-import 'package:ecommerce_app/presentation/auth/index.dart';
 import 'package:ecommerce_app/presentation/splash/index.dart';
 import 'package:ecommerce_app/service_locator.dart';
 import 'package:flutter/material.dart';
@@ -23,10 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (_) => SplashCubit()..appStarted()),
-        BlocProvider(create: (_) => SigninEmailCubit()),
-      ],
+      providers: [BlocProvider(create: (_) => SplashCubit()..appStarted())],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: AppTheme.darkTheme,

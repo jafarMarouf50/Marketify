@@ -1,7 +1,7 @@
-part of '../../index.dart';
+part of '../index.dart';
 
-class SigninEmailCubit extends Cubit<SigninEmailState> {
-  SigninEmailCubit() : super(SigninEmailInitial()) {
+class EmailCubit extends Cubit<EmailState> {
+  EmailCubit() : super(EmailInitial()) {
     emailController.addListener(emailChanged);
   }
 
@@ -11,35 +11,35 @@ class SigninEmailCubit extends Cubit<SigninEmailState> {
   void emailChanged() {
     final email = emailController.text;
     if (email.isEmpty) {
-      emit(SigninEmailInitial());
+      emit(EmailInitial());
     } else if (!_emailRegExp.hasMatch(email)) {
-      emit(SigninEmailInvalid("Please enter a valid email address."));
+      emit(EmailInvalid("Please enter a valid email address."));
     } else {
-      emit(SigninEmailValid(email));
+      emit(EmailValid(email));
     }
   }
 
   void validateCurrentEmail() {
-    final email = emailController.text;
+    emailController.text;
     emailChanged();
   }
 
   void validateAndProceed() {
     final email = emailController.text;
     if (email.isEmpty) {
-      emit(SigninEmailInvalid("Email cannot be empty."));
+      emit(EmailInvalid("Email cannot be empty."));
       return;
     }
     if (!_emailRegExp.hasMatch(email)) {
-      emit(SigninEmailInvalid("Please enter a valid email address."));
+      emit(EmailInvalid("Please enter a valid email address."));
       return;
     }
-    emit(SigninReadyToContinue(email));
+    emit(ReadyToContinue(email));
   }
 
   void reset() {
     emailController.clear();
-    emit(SigninEmailInitial());
+    emit(EmailInitial());
   }
 
   @override

@@ -9,7 +9,7 @@ class ResetPasswordView extends StatelessWidget {
       appBar: BasicAppbar(hideBack: true),
       body: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(
+          SliverFillRemaining(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
