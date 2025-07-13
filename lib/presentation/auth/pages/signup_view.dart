@@ -6,7 +6,7 @@ class SignupView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(),
+      appBar: BasicHomeAppbar(),
       body: BlocProvider(
         create: (_) => SignupCubit(),
         child: SignupViewContent(),
@@ -100,6 +100,7 @@ class SignupViewContent extends StatelessWidget {
               controller: cubit.passwordController,
               errorText: state.passwordError,
               obscureText: !state.isPasswordVisible,
+              textInputAction: TextInputAction.done,
               suffixIcon: IconButton(
                 icon: Icon(
                   state.isPasswordVisible

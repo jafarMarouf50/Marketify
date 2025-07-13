@@ -8,6 +8,7 @@ class CustomTextField extends StatelessWidget {
     this.errorText,
     this.obscureText = false,
     this.suffixIcon,
+    this.textInputAction,
   });
 
   final String title;
@@ -15,12 +16,14 @@ class CustomTextField extends StatelessWidget {
   final String? errorText;
   final bool obscureText;
   final Widget? suffixIcon;
+  final TextInputAction? textInputAction;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
       obscureText: obscureText,
+      textInputAction: textInputAction ?? TextInputAction.next,
       decoration: InputDecoration(
         hintText: title,
         errorText: errorText,

@@ -10,7 +10,7 @@ class SearchView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(
+      appBar: BasicHomeAppbar(
         actionsPadding: const EdgeInsets.symmetric(
           horizontal: horizontalPadding,
         ),

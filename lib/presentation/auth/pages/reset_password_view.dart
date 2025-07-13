@@ -6,7 +6,7 @@ class ResetPasswordView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(hideBack: true),
+      appBar: BasicHomeAppbar(hideBack: true),
       body: CustomScrollView(
         slivers: [
           SliverFillRemaining(

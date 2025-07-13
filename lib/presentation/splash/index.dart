@@ -3,7 +3,6 @@ library;
 import 'package:ecommerce_app/common/index.dart';
 import 'package:ecommerce_app/core/index.dart';
 import 'package:ecommerce_app/domain/auth/index.dart';
-import 'package:ecommerce_app/presentation/admin/index.dart';
 import 'package:ecommerce_app/presentation/auth/index.dart';
 import 'package:ecommerce_app/service_locator.dart';
 import 'package:flutter/material.dart';

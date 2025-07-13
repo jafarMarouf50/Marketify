@@ -8,7 +8,7 @@ class GenderAndAgeSelectionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(),
+      appBar: BasicHomeAppbar(),
       body: MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => GenderSelectionCubit()),

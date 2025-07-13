@@ -5,6 +5,7 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return BlocProvider(
       create: (context) => ButtonCubit(),
       child: BlocListener<ButtonCubit, ButtonState>(

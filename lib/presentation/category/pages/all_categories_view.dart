@@ -8,7 +8,7 @@ class AllCategoriesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(),
+      appBar: BasicHomeAppbar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: CustomScrollView(

@@ -20,7 +20,7 @@ class EnterPasswordViewContent extends StatelessWidget {
         }
         if (state is ButtonStateSuccess) {
           if (state.dataSuccess == "admin") {
-            AppNavigator.pushReplacementAndRemove(context, const AdminHome());
+            AppNavigator.pushReplacementAndRemove(context, const DashboardView());
           } else {
             AppNavigator.pushReplacementAndRemove(
               context,

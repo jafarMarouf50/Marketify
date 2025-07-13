@@ -6,7 +6,7 @@ class OrderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(hideBack: true, title: Text("Orders")),
+      appBar: BasicHomeAppbar(hideBack: true, title: Text("Orders")),
       body: CustomScrollView(
         slivers: [
           const SliverToBoxAdapter(child: OrderStatusTabs()),

@@ -6,7 +6,7 @@ class CartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(title: Text('Cart')),
+      appBar: BasicHomeAppbar(title: Text('Cart')),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
