@@ -59,7 +59,7 @@ class Header extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
-        color: AppColorsDark.secondBackground,
+        color: AppColorsDark.secondary,
       ),
       child: Center(
         child: Row(
@@ -78,7 +78,7 @@ class Header extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 14, vertical: 12),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
-        color: AppColorsDark.secondBackground,
+        color: AppColorsDark.secondary,
       ),
       child: Row(
         children: [

@@ -14,7 +14,7 @@ class ProductCard extends StatelessWidget {
       child: Container(
         width: MediaQuery.sizeOf(context).width / 2.34,
         decoration: BoxDecoration(
-          color: AppColorsDark.secondBackground,
+          color: AppColorsDark.secondary,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(

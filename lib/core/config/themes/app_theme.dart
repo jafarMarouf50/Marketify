@@ -19,7 +19,7 @@ class AppTheme {
 
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
-      fillColor: AppColorsDark.secondBackground,
+      fillColor: AppColorsDark.secondary,
       hintStyle: const TextStyle(
         color: Color(0xffA7A7A7),
         fontWeight: FontWeight.w400,
@@ -50,7 +50,7 @@ class AppTheme {
     extensions: <ThemeExtension<dynamic>>[
       BoxDecorationTheme(
         card: BoxDecoration(
-          color: AppColorsDark.secondBackground,
+          color: AppColorsDark.secondary,
           borderRadius: BorderRadius.circular(30),
           // shape: BoxShape.circle,
         ),

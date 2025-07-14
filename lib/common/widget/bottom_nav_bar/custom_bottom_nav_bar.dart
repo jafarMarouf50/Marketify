@@ -44,9 +44,9 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
 
   final List<Widget> _adminPages = [
     DashboardView(),
-    DashboardView(),
+    OrdersView(),
+    ProductsView(),
     ProfileView(),
-    DashboardView(),
   ];
 
   List<Widget> get _pages {

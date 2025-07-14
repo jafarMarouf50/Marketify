@@ -89,7 +89,7 @@ class GenderAndAgeSelectionView extends StatelessWidget {
   Widget _finishButton(BuildContext context) {
     return Container(
       height: 100,
-      color: AppColorsDark.secondBackground,
+      color: AppColorsDark.secondary,
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Center(
         child: Builder(

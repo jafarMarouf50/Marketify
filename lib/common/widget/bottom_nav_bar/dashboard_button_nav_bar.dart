@@ -11,10 +11,10 @@ class DashboardButtonNavBar extends StatelessWidget {
   });
 
   static const List<NavBarItem> _adminItems = [
+    NavBarItem(assetName: AppImages.vectorsDashboard, label: 'Dashboard'),
+    NavBarItem(assetName: AppImages.vectorsShoppingCart, label: 'Orders'),
+    NavBarItem(assetName: AppImages.vectorsPackage, label: 'Products'),
     NavBarItem(assetName: AppImages.vectorsProfile2, label: 'Profile'),
-    NavBarItem(assetName: AppImages.vectorsNotification, label: 'Orders'),
-    NavBarItem(assetName: AppImages.vectorsReceipt, label: 'Products'),
-    NavBarItem(assetName: AppImages.vectorsHome, label: 'Dashboard'),
   ];
 
   @override

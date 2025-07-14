@@ -42,4 +42,8 @@ class AppImages {
 
   static const String vectorsReceipt = "$basePathVectors/receipt.svg";
   static const String vectorsHeart = '$basePathVectors/heart.svg';
+
+  static const String vectorsDashboard = '$basePathVectors/dashboard.svg';
+  static const String vectorsPackage = '$basePathVectors/package.svg';
+  static const String vectorsShoppingCart = '$basePathVectors/shopping_cart.svg';
 }

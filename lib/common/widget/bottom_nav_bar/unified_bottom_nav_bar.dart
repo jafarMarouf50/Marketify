@@ -43,11 +43,12 @@ class UnifiedBottomNavBar extends StatelessWidget {
     return GestureDetector(
       onTap: () => onTap(index),
       child: AnimatedScale(
-        scale: isSelected ? 1.2 : 1.0,
+        scale: isSelected ? 1.3 : 1.0,
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
         child: SvgPicture.asset(
           item.assetName,
+          width: 25,
           colorFilter: ColorFilter.mode(
             isSelected
                 ? AppColors.selectedBtmNavBar

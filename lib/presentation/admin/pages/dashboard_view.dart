@@ -5,10 +5,7 @@ class DashboardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const DashboardAppBar(),
-      body: const DashboardBody(),
-    );
+    return Scaffold(body: const DashboardBody());
   }
 }
 
@@ -17,163 +14,79 @@ class DashboardBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: CustomScrollView(
-        slivers: [
-          DashboardMetrics(),
+    return CustomScrollView(
+      slivers: [
+        DashboardAppBar(),
 
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text('Recent Orders', style: TextStyle(fontSize: 16)),
-                  Text('View All', style: TextStyle(color: Colors.blue)),
-                ],
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: _buildWelcomeSection(),
+          ),
+        ),
+
+        SliverPadding(
+          padding: const EdgeInsets.all(8),
+          sliver: DashboardMetrics(),
+        ),
+
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+            child: Text(
+              'Quick Actions',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
               ),
             ),
           ),
-          RecentOrdersSection(),
-          // SliverAnimatedList(child: RecentOrdersSection()),
-        ],
-      ),
-    );
-  }
-}
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 8),
+          sliver: DashboardQuickSection(),
+        ),
 
-class RecentOrdersSection extends StatelessWidget {
-  const RecentOrdersSection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverList.list(
-      children: [
-        const OrderTile(
-          orderId: '#1001',
-          name: 'John Doe',
-          product: 'iPhone 15 Pro',
-          time: '2 min ago',
-          amount: '\$999',
-          status: 'Completed',
-        ),
-        const OrderTile(
-          orderId: '#1001',
-          name: 'John Doe',
-          product: 'iPhone 15 Pro',
-          time: '2 min ago',
-          amount: '\$999',
-          status: 'Completed',
-        ),
-        const OrderTile(
-          orderId: '#1002',
-          name: 'Sarah Smith',
-          product: 'Samsung Galaxy',
-          time: '5 min ago',
-          amount: '\$799',
-          status: 'Pending',
-        ),
-        const OrderTile(
-          orderId: '#1003',
-          name: 'Mike Johnson',
-          product: 'MacBook Pro',
-          time: '10 min ago',
-          amount: '\$1,299',
-          status: 'Processing',
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: RecentOrdersSection(),
+          ),
         ),
       ],
     );
   }
-}
 
-class OrderTile extends StatelessWidget {
-  final String orderId;
-  final String name;
-  final String product;
-  final String time;
-  final String amount;
-  final String status;
-
-  const OrderTile({
-    super.key,
-    required this.orderId,
-    required this.name,
-    required this.product,
-    required this.time,
-    required this.amount,
-    required this.status,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final Color statusColor;
-    switch (status) {
-      case 'Completed':
-        statusColor = Colors.green;
-        break;
-      case 'Pending':
-        statusColor = Colors.orange;
-        break;
-      case 'Processing':
-        statusColor = Colors.blue;
-        break;
-      default:
-        statusColor = Colors.grey;
-    }
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Container(
-        padding: EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: AppColorsDark.container,
-          shape: BoxShape.rectangle,
+  Widget _buildWelcomeSection() {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [AppColorsDark.secondary, AppColorsDark.primary],
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  orderId,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Text(name),
-                Text(product, style: const TextStyle(color: Colors.grey)),
-              ],
+        borderRadius: BorderRadius.circular(24),
+      ),
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Welcome back, Admin!',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  time,
-                  style: const TextStyle(fontSize: 12, color: Colors.grey),
-                ),
-                Text(
-                  amount,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(top: 4),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: statusColor,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    status,
-                    style: TextStyle(fontSize: 12, color: statusColor),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+          ),
+          SizedBox(height: 8),
+          Text(
+            'Here\'s what\'s happening with your store today.',
+            style: TextStyle(color: Color(0xFFDDD6FE), fontSize: 14),
+          ),
+        ],
       ),
     );
   }

@@ -14,7 +14,7 @@ class AppColorsLight {
 class AppColorsDark {
   static const primary = Color(0xff8E6CEF);
   static const background = Color(0xff1D182A);
-  static const secondBackground = Color(0xff342F3F);
+  static const secondary = Color(0xff342F3F);
   static const Color hintText = Color(0xffA7A7A7);
   static const Color text = Colors.white;
   static const Color container = Color(0xff3a3545);
