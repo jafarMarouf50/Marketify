@@ -1,11 +1,9 @@
-import 'package:ecommerce_app/data/auth/index.dart';
-import 'package:ecommerce_app/domain/auth/index.dart';
-import 'package:get_it/get_it.dart';
+part of '../index.dart';
 
 final getIt = GetIt.instance;
 
 Future<void> initializeDependency() async {
-  // service
+  // services
   // remote
   getIt.registerSingleton<AuthFirebaseService>(AuthFirebaseServiceImp());
   // local

@@ -3,7 +3,6 @@ library;
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_app/core/index.dart';
 import 'package:ecommerce_app/data/auth/index.dart';
-import 'package:ecommerce_app/service_locator.dart';
 import 'package:hive/hive.dart';
 
 //entity

@@ -1,9 +1,7 @@
 part of '../index.dart';
 
 class PasswordStrengthIndicator extends StatefulWidget {
-  final PasswordStrength strength;
-
-  const PasswordStrengthIndicator({super.key, required this.strength});
+  const PasswordStrengthIndicator({super.key});
 
   @override
   State<PasswordStrengthIndicator> createState() =>
@@ -12,78 +10,58 @@ class PasswordStrengthIndicator extends StatefulWidget {
 
 class _PasswordStrengthIndicatorState extends State<PasswordStrengthIndicator>
     with TickerProviderStateMixin {
-  late AnimationController _mainController;
-
+  late AnimationController _controller;
   late Animation<double> _progressAnimation;
-  late Animation<double> _opacityAnimation;
-  late Animation<double> _scaleAnimation;
   late Animation<Color?> _colorAnimation;
+
+  PasswordStrength _previousStrength = PasswordStrength.none;
 
   @override
   void initState() {
     super.initState();
-
-    _mainController = AnimationController(
-      duration: const Duration(milliseconds: 800),
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 600),
       vsync: this,
     );
-
-    _initializeAnimations();
-    _mainController.forward();
   }
 
-  void _initializeAnimations() {
-    final strength = widget.strength;
+  void _animateToStrength(PasswordStrength newStrength) {
+    _controller.reset();
 
-    _progressAnimation = Tween<double>(begin: 0.0, end: strength.value).animate(
-      CurvedAnimation(parent: _mainController, curve: Curves.easeInOutCubic),
-    );
+    _progressAnimation = Tween<double>(
+      begin: _previousStrength.value,
+      end: newStrength.value,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
 
-    _opacityAnimation = Tween<double>(
-      begin: 0.0,
-      end: 1.0,
-    ).animate(CurvedAnimation(parent: _mainController, curve: Curves.easeIn));
+    _colorAnimation = ColorTween(
+      begin: _previousStrength.color,
+      end: newStrength.color,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
-    _scaleAnimation = Tween<double>(begin: 0.8, end: 1.0).animate(
-      CurvedAnimation(parent: _mainController, curve: Curves.elasticOut),
-    );
-
-    _colorAnimation =
-        ColorTween(begin: Colors.grey.shade300, end: strength.color).animate(
-          CurvedAnimation(parent: _mainController, curve: Curves.easeInOut),
-        );
-  }
-
-  @override
-  void didUpdateWidget(covariant PasswordStrengthIndicator oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.strength != widget.strength) {
-      _mainController.reset();
-      _initializeAnimations();
-      _mainController.forward();
-    }
+    _controller.forward();
+    _previousStrength = newStrength;
   }
 
   @override
   void dispose() {
-    _mainController.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _mainController,
-      builder: (context, child) {
-        return Semantics(
-          label: 'Password strength: ${widget.strength.label}',
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Progress bar
-              Transform.scale(
-                scale: _scaleAnimation.value,
-                child: Container(
+    return BlocBuilder<PasswordStrengthCubit, PasswordStrengthState>(
+      builder: (context, state) {
+        _animateToStrength(state.strength);
+
+        return AnimatedBuilder(
+          animation: _controller,
+          builder: (context, child) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Progress Bar
+                Container(
                   height: 8,
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -92,38 +70,12 @@ class _PasswordStrengthIndicatorState extends State<PasswordStrengthIndicator>
                   ),
                   child: Stack(
                     children: [
-                      // Background shadow
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          boxShadow: widget.strength != PasswordStrength.none
-                              ? [
-                                  BoxShadow(
-                                    color:
-                                        (_colorAnimation.value ?? Colors.grey),
-                                    blurRadius: 6,
-                                    spreadRadius: 1,
-                                  ),
-                                ]
-                              : null,
-                        ),
-                      ),
                       FractionallySizedBox(
                         alignment: Alignment.centerLeft,
                         widthFactor: _progressAnimation.value,
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
-                            gradient: widget.strength != PasswordStrength.none
-                                ? LinearGradient(
-                                    colors: [
-                                      (_colorAnimation.value ??
-                                          Colors.grey.shade400),
-                                      (_colorAnimation.value ??
-                                          Colors.grey.shade600),
-                                    ],
-                                  )
-                                : null,
                             color: _colorAnimation.value,
                           ),
                         ),
@@ -131,18 +83,13 @@ class _PasswordStrengthIndicatorState extends State<PasswordStrengthIndicator>
                     ],
                   ),
                 ),
-              ),
-              const SizedBox(height: 8),
-              // Strength label
-              AnimatedOpacity(
-                opacity: widget.strength == PasswordStrength.none
-                    ? 0.0
-                    : _opacityAnimation.value,
-                duration: const Duration(milliseconds: 300),
-                child: Transform.translate(
-                  offset: Offset(0, (1 - _opacityAnimation.value) * 10),
+                const SizedBox(height: 8),
+                // Label
+                AnimatedOpacity(
+                  opacity: state.strength == PasswordStrength.none ? 0.0 : 1.0,
+                  duration: const Duration(milliseconds: 300),
                   child: Text(
-                    '${widget.strength.emoji} ${widget.strength.label}',
+                    state.strength.label,
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
@@ -150,9 +97,9 @@ class _PasswordStrengthIndicatorState extends State<PasswordStrengthIndicator>
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            );
+          },
         );
       },
     );

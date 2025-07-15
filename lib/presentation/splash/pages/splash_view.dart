@@ -14,11 +14,11 @@ class SplashView extends StatelessWidget {
           state.role == 'admin'
               ? AppNavigator.pushReplacementAndRemove(
                   context,
-                  const CustomBottomNavBar(navBarType: NavBarType.admin),
+                  const BottomNavBar(navBarType: NavBarType.admin),
                 )
               : AppNavigator.pushReplacementAndRemove(
                   context,
-                  const CustomBottomNavBar(navBarType: NavBarType.customer),
+                  const BottomNavBar(navBarType: NavBarType.customer),
                 );
         }
       },

@@ -6,7 +6,7 @@ class SigninView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicHomeAppbar(hideBack: true),
+      appBar: BasicAppbar(hideBack: true),
       body: BlocProvider(create: (_) => EmailCubit(), child: EnterEmailView()),
     );
   }

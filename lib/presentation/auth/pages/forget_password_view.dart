@@ -6,7 +6,7 @@ class ForgetPasswordView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicHomeAppbar(),
+      appBar: BasicAppbar(),
       body: MultiBlocProvider(
         providers: [
           BlocProvider(create: (_) => EmailCubit()),

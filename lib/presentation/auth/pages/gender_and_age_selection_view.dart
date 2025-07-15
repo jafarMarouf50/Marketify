@@ -8,7 +8,7 @@ class GenderAndAgeSelectionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicHomeAppbar(),
+      appBar: BasicAppbar(),
       body: MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => GenderSelectionCubit()),
@@ -28,7 +28,7 @@ class GenderAndAgeSelectionView extends StatelessWidget {
             if (state is ButtonStateSuccess) {
               AppNavigator.pushReplacementAndRemove(
                 context,
-                const CustomBottomNavBar(),
+                const BottomNavBar(),
               );
             }
           },

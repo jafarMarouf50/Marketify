@@ -17,7 +17,7 @@ class AuthLocalServiceImpl extends AuthLocalService {
       if (box.values.isEmpty) return null;
 
       // Check if cache is still valid
-      if (isCacheExpired(_lastUpdatedKey, _cacheExpirationHours)) {
+      if (LocalStorageService.isCacheExpired(_lastUpdatedKey, _cacheExpirationHours)) {
         return null;
       }
       return box.values.first;

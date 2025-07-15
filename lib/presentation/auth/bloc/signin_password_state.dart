@@ -1,13 +1,13 @@
 part of '../index.dart';
 
-class PasswordState {
+class SigninPasswordState {
   final String password;
   final bool isPasswordVisible;
   final PasswordStrength strength;
   final String? errorMessage;
   final bool forceClearError;
 
-  const PasswordState({
+  const SigninPasswordState({
     this.password = "",
     this.isPasswordVisible = false,
     this.strength = PasswordStrength.none,
@@ -15,7 +15,7 @@ class PasswordState {
     this.forceClearError = false,
   });
 
-  PasswordState copyWith({
+  SigninPasswordState copyWith({
     String? password,
     bool? isPasswordVisible,
     PasswordStrength? strength,
@@ -23,7 +23,7 @@ class PasswordState {
     bool clearErrorMessage = false,
     bool? forceClearError,
   }) {
-    return PasswordState(
+    return SigninPasswordState(
       password: password ?? this.password,
       isPasswordVisible: isPasswordVisible ?? this.isPasswordVisible,
       strength: strength ?? this.strength,

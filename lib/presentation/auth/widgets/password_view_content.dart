@@ -1,7 +1,7 @@
 part of '../index.dart';
 
-class EnterPasswordViewContent extends StatelessWidget {
-  const EnterPasswordViewContent({super.key, required this.loginUserRequest});
+class PasswordViewContent extends StatelessWidget {
+  const PasswordViewContent({super.key, required this.loginUserRequest});
 
   final LoginUserRequest loginUserRequest;
 
@@ -19,14 +19,15 @@ class EnterPasswordViewContent extends StatelessWidget {
             ..showSnackBar(snackBar);
         }
         if (state is ButtonStateSuccess) {
-          if (state.dataSuccess == "admin") {
-            AppNavigator.pushReplacementAndRemove(context, const DashboardView());
-          } else {
-            AppNavigator.pushReplacementAndRemove(
-              context,
-              const CustomBottomNavBar(),
-            );
-          }
+          state.dataSuccess == "admin"
+              ? AppNavigator.pushReplacementAndRemove(
+                  context,
+                  const BottomNavBar(navBarType: NavBarType.admin),
+                )
+              : AppNavigator.pushReplacementAndRemove(
+                  context,
+                  const BottomNavBar(navBarType: NavBarType.customer),
+                );
         }
       },
       child: GestureDetector(
@@ -66,11 +67,11 @@ class EnterPasswordViewContent extends StatelessWidget {
   }
 
   Widget _passwordField(BuildContext context) {
-    return BlocBuilder<PasswordCubit, PasswordState>(
+    return BlocBuilder<SigninPasswordCubit, SigninPasswordState>(
       builder: (context, state) {
         return CustomTextField(
           title: "Password",
-          controller: context.read<PasswordCubit>().passwordController,
+          controller: context.read<SigninPasswordCubit>().passwordController,
           errorText: state.strength == PasswordStrength.strong
               ? null
               : state.errorMessage,
@@ -82,7 +83,7 @@ class EnterPasswordViewContent extends StatelessWidget {
                   : Icons.visibility,
             ),
             onPressed: () {
-              context.read<PasswordCubit>().togglePasswordVisibility();
+              context.read<SigninPasswordCubit>().togglePasswordVisibility();
             },
           ),
         );
@@ -91,16 +92,16 @@ class EnterPasswordViewContent extends StatelessWidget {
   }
 
   Widget _finishButton(BuildContext context) {
-    return BlocBuilder<PasswordCubit, PasswordState>(
+    return BlocBuilder<SigninPasswordCubit, SigninPasswordState>(
       builder: (context, state) {
         return BasicReactiveButton(
           onPressed: () {
             final passwordIsValid = context
-                .read<PasswordCubit>()
+                .read<SigninPasswordCubit>()
                 .validatePassword();
             if (passwordIsValid) {
               final currentPassword = context
-                  .read<PasswordCubit>()
+                  .read<SigninPasswordCubit>()
                   .state
                   .password;
               loginUserRequest.password = currentPassword;
@@ -122,7 +123,7 @@ class EnterPasswordViewContent extends StatelessWidget {
       promptText: "Forget Password? ",
       actionText: "Reset",
       onTap: () {
-        context.read<PasswordCubit>().passwordController.clear();
+        context.read<SigninPasswordCubit>().passwordController.clear();
         AppNavigator.push(context, const ForgetPasswordView());
       },
     );

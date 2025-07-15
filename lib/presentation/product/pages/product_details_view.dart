@@ -8,7 +8,7 @@ class ProductDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicHomeAppbar(
+      appBar: BasicAppbar(
         actionsPadding: EdgeInsets.only(right: 24),
         action: GestureDetector(
           onTap: () {},

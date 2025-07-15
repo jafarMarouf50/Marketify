@@ -27,7 +27,7 @@ class Assets {
   static const String vectorsNotFound = 'assets/vectors/not_found.svg';
   static const String vectorsNotification = 'assets/vectors/notification.svg';
   static const String vectorsPackage = 'assets/vectors/package.svg';
-  static const String vectorsProfile2 = 'assets/vectors/profile2.svg';
+  static const String vectorsProfile2 = 'assets/vectors/profile.svg';
   static const String vectorsReceipt = 'assets/vectors/receipt.svg';
   static const String vectorsSearch = 'assets/vectors/search.svg';
   static const String vectorsShoppingCart = 'assets/vectors/shopping_cart.svg';

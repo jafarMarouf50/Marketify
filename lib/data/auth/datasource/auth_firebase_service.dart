@@ -124,7 +124,7 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
         .get()
         .then((value) => value.data());
     var userEntity = UserModel.fromMap(data!).toEntity();
-    saveData(userEntity, AppConstants.kUserBox, _lastUpdatedKey);
+    LocalStorageService.saveData(userEntity, AppConstants.kUserBox, _lastUpdatedKey);
     return userEntity.role;
   }
 
@@ -144,7 +144,7 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
         return const Left("User data not found in Firestore");
       }
       var userEntity = UserModel.fromMap(currentUserData).toEntity();
-      saveData(userEntity, AppConstants.kUserBox, _lastUpdatedKey);
+      LocalStorageService.saveData(userEntity, AppConstants.kUserBox, _lastUpdatedKey);
       return Right(userEntity);
     } on FirebaseAuthException catch (e) {
       return Left("Firebase Auth error: ${e.code} - ${e.message}");
@@ -156,7 +156,7 @@ class AuthFirebaseServiceImp extends AuthFirebaseService {
   @override
   Future<Either> signOut() async {
     try {
-      await clearAllLocalData();
+      await LocalStorageService.clearAllLocalData();
       await FirebaseAuth.instance.signOut();
       return Right("Sign out Successfully!");
     } on FirebaseAuthException catch (e) {

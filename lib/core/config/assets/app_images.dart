@@ -36,7 +36,7 @@ class AppImages {
 
   static const String vectorsHome = '$basePathVectors/home.svg';
 
-  static const String vectorsProfile2 = "$basePathVectors/profile2.svg";
+  static const String vectorsProfile = "$basePathVectors/profile.svg";
 
   static const String vectorsNotification = "$basePathVectors/notification.svg";
 

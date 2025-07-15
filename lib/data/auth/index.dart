@@ -7,7 +7,6 @@ import 'package:dartz/dartz.dart';
 import 'package:ecommerce_app/common/index.dart';
 import 'package:ecommerce_app/core/index.dart';
 import 'package:ecommerce_app/domain/auth/index.dart';
-import 'package:ecommerce_app/service_locator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hive/hive.dart';
 

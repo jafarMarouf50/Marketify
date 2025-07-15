@@ -17,7 +17,7 @@ class CustomerBottomNavBar extends StatelessWidget {
       label: 'Notifications',
     ),
     NavBarItem(assetName: AppImages.vectorsReceipt, label: 'Orders'),
-    NavBarItem(assetName: AppImages.vectorsProfile2, label: 'Profile'),
+    NavBarItem(assetName: AppImages.vectorsProfile, label: 'Profile'),
   ];
 
   @override

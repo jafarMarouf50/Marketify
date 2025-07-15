@@ -14,7 +14,7 @@ class DashboardButtonNavBar extends StatelessWidget {
     NavBarItem(assetName: AppImages.vectorsDashboard, label: 'Dashboard'),
     NavBarItem(assetName: AppImages.vectorsShoppingCart, label: 'Orders'),
     NavBarItem(assetName: AppImages.vectorsPackage, label: 'Products'),
-    NavBarItem(assetName: AppImages.vectorsProfile2, label: 'Profile'),
+    NavBarItem(assetName: AppImages.vectorsProfile, label: 'Profile'),
   ];
 
   @override

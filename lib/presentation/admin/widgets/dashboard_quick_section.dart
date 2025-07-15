@@ -14,11 +14,20 @@ class DashboardQuickSection extends StatelessWidget {
       ),
       delegate: SliverChildListDelegate([
         _buildQuickActionButton(
+          icon: Icons.category,
+          label: 'Add Category',
+          color: const Color(0xFF06B6D4),
+          onTap: () {
+            AppNavigator.push(context, const AddCategoryScreen());
+
+          },
+        ),
+        _buildQuickActionButton(
           icon: Icons.add,
           label: 'Add Product',
           color: const Color(0xFF3B82F6),
           onTap: () {
-            // Handle add product
+            AppNavigator.push(context, const AddProductView());
           },
         ),
         _buildQuickActionButton(
@@ -61,14 +70,7 @@ class DashboardQuickSection extends StatelessWidget {
             // Handle settings
           },
         ),
-        _buildQuickActionButton(
-          icon: Icons.support_agent,
-          label: 'Support',
-          color: const Color(0xFF06B6D4),
-          onTap: () {
-            // Handle support
-          },
-        ),
+
         _buildQuickActionButton(
           icon: Icons.notifications,
           label: 'Notifications',

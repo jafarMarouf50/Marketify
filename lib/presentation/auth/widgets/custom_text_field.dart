@@ -1,6 +1,15 @@
 part of '../index.dart';
 
 class CustomTextField extends StatelessWidget {
+  final String title;
+  final TextEditingController controller;
+  final String? errorText;
+  final bool obscureText;
+  final Widget? suffixIcon;
+  final TextInputAction? textInputAction;
+  final void Function(String)? onChanged;
+  final String? Function(String?)? validator;
+
   const CustomTextField({
     super.key,
     required this.title,
@@ -9,21 +18,18 @@ class CustomTextField extends StatelessWidget {
     this.obscureText = false,
     this.suffixIcon,
     this.textInputAction,
+    this.onChanged,
+    this.validator,
   });
-
-  final String title;
-  final TextEditingController controller;
-  final String? errorText;
-  final bool obscureText;
-  final Widget? suffixIcon;
-  final TextInputAction? textInputAction;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       controller: controller,
       obscureText: obscureText,
       textInputAction: textInputAction ?? TextInputAction.next,
+      onChanged: onChanged,
+      validator: validator,
       decoration: InputDecoration(
         hintText: title,
         errorText: errorText,

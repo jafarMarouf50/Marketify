@@ -1,6 +1,6 @@
 part of '../../index.dart';
 
-class BasicHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
+class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? title;
   final Widget? action;
   final Color? backgroundColor;
@@ -8,7 +8,7 @@ class BasicHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   final double? height;
   final EdgeInsetsGeometry? actionsPadding;
 
-  const BasicHomeAppbar({
+  const BasicAppbar({
     this.title,
     this.hideBack = false,
     this.action,

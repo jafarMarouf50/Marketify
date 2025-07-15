@@ -1,41 +1,40 @@
 part of '../index.dart';
 
 class SignupState {
+  final AutovalidateMode autoValidateMode;
   final bool isPasswordVisible;
-  final String? emailError;
-  final String? passwordError;
   final String? firstNameError;
   final String? lastNameError;
-
-  final bool isPasswordStrong;
+  final String? emailError;
+  final String? passwordError;
   final PasswordStrength passwordStrength;
 
   SignupState({
+    this.autoValidateMode = AutovalidateMode.disabled,
     this.isPasswordVisible = false,
-    this.emailError,
-    this.passwordError,
     this.firstNameError,
     this.lastNameError,
-    this.isPasswordStrong = false,
+    this.emailError,
+    this.passwordError,
     this.passwordStrength = PasswordStrength.none,
   });
 
   SignupState copyWith({
+    AutovalidateMode? autoValidateMode,
     bool? isPasswordVisible,
-    String? emailError,
-    String? passwordError,
     String? firstNameError,
     String? lastNameError,
-    bool? isPasswordStrong,
+    String? emailError,
+    String? passwordError,
     PasswordStrength? passwordStrength,
   }) {
     return SignupState(
+      autoValidateMode: autoValidateMode ?? this.autoValidateMode,
       isPasswordVisible: isPasswordVisible ?? this.isPasswordVisible,
-      emailError: emailError,
-      passwordError: passwordError,
       firstNameError: firstNameError,
       lastNameError: lastNameError,
-      isPasswordStrong: isPasswordStrong ?? this.isPasswordStrong,
+      emailError: emailError,
+      passwordError: passwordError,
       passwordStrength: passwordStrength ?? this.passwordStrength,
     );
   }

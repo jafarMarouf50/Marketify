@@ -1,11 +1,11 @@
 part of '../index.dart';
 
-class PasswordCubit extends Cubit<PasswordState> {
+class SigninPasswordCubit extends Cubit<SigninPasswordState> {
   final TextEditingController passwordController = TextEditingController();
 
   static const int minPasswordLength = 8;
 
-  PasswordCubit() : super(const PasswordState()) {
+  SigninPasswordCubit() : super(const SigninPasswordState()) {
     passwordController.addListener(_onPasswordChanged);
   }
 

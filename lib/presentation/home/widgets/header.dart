@@ -7,11 +7,23 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => UserInfoDisplayCubit()..displayUser(),
-      child: BlocBuilder<UserInfoDisplayCubit, UserInfoDisplayState>(
+      child: BlocConsumer<UserInfoDisplayCubit, UserInfoDisplayState>(
+        listener: (context, state) {
+          if (state is LoadUserFailure) {
+            final snackBar = AppSnackBar.show(
+              Text(state.errMsg, style: TextStyle(color: Colors.white)),
+              backgroundColor: AppColors.danger,
+            );
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(snackBar);
+          }
+        },
         builder: (context, state) {
           if (state is UserInfoDisplayLoading) {
             return Center(child: CircularProgressIndicator());
           }
+
           if (state is UserInfoDisplayLoaded) {
             return Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.0),
@@ -29,46 +41,14 @@ class Header extends StatelessWidget {
               ),
             );
           }
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _defaultProfileImage(),
-              _defaultGender(context),
-              _card(),
-            ],
+          return IconButton(
+            onPressed: () {
+              BlocProvider.of<UserInfoDisplayCubit>(context).displayUser();
+            },
+            icon: Icon(Icons.refresh),
           );
+
         },
-      ),
-    );
-  }
-
-  Widget _defaultProfileImage() {
-    return Container(
-      width: 40,
-      height: 40,
-      decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage(AppImages.imagesProfile)),
-        shape: BoxShape.circle,
-        color: AppColorsDark.background,
-      ),
-    );
-  }
-
-  Widget _defaultGender(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(100),
-        color: AppColorsDark.secondary,
-      ),
-      child: Center(
-        child: Row(
-          children: [
-            Text("Men", style: AppStyles.styleBold16(context)),
-            SizedBox(width: 4),
-            Icon(Icons.keyboard_arrow_down),
-          ],
-        ),
       ),
     );
   }

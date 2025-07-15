@@ -1,5 +1,7 @@
 library;
 
+import 'dart:io';
+
 import 'package:ecommerce_app/core/index.dart';
 import 'package:ecommerce_app/domain/auth/index.dart';
 import 'package:ecommerce_app/domain/product/index.dart';
@@ -13,23 +15,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hive/hive.dart';
+import 'package:image_picker/image_picker.dart';
 
+part 'bloc/bottom_nav_bar/bottom_nav_bar_cubit.dart';
 part 'bloc/button/button_cubit.dart';
 part 'bloc/button/button_state.dart';
 part 'bloc/filter_type_bottom_sheet/filter_cubit.dart';
 part 'bloc/filter_type_bottom_sheet/filter_state.dart';
 part 'bloc/filter_type_bottom_sheet/option_select_cubit.dart';
 part 'exceptions/storage_exception.dart';
+part 'functions/password_strength.dart';
+part 'functions/show_error_dialog.dart';
 part 'helper/bottomsheet/app_bottomsheet.dart';
-part 'helper/functions/clear_all_local_data.dart';
-part 'helper/functions/is_cache_expired.dart';
-part 'helper/functions/password_strength.dart';
-part 'helper/functions/save_data_in_local_db.dart';
+part 'helper/image_picker_service/image_picker_service.dart';
+part 'helper/local_storage_service/local_storage_service.dart';
 part 'helper/navigator/app_navigator.dart';
 part 'helper/snackbar/snackbar.dart';
-part 'widget/appbar/basic_home_app_bar.dart';
+part 'widget/appbar/basic_app_bar.dart';
 part 'widget/appbar/dashboard_app_bar.dart';
-part 'widget/bottom_nav_bar/custom_bottom_nav_bar.dart';
+part 'widget/bottom_nav_bar/bottom_nav_bar.dart';
 part 'widget/bottom_nav_bar/customer_bottom_nav_bar.dart';
 part 'widget/bottom_nav_bar/dashboard_button_nav_bar.dart';
 part 'widget/bottom_nav_bar/nav_bar_item.dart';

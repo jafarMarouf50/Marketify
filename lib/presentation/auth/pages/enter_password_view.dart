@@ -8,13 +8,13 @@ class EnterPasswordView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicHomeAppbar(),
+      appBar: BasicAppbar(),
       body: MultiBlocProvider(
         providers: [
-          BlocProvider(create: (_) => PasswordCubit()),
+          BlocProvider(create: (_) => SigninPasswordCubit()),
           BlocProvider(create: (_) => ButtonCubit()),
         ],
-        child: EnterPasswordViewContent(loginUserRequest: loginUserRequest),
+        child: PasswordViewContent(loginUserRequest: loginUserRequest),
       ),
     );
   }
