@@ -1,4 +1,4 @@
-part of '../index.dart';
+part of '../../index.dart';
 
 class PickImageSection extends StatelessWidget {
   final ImageListManager imageListManager;
@@ -17,6 +17,7 @@ class PickImageSection extends StatelessWidget {
           ),
           child: Column(
             children: [
+              // Add Image Button
               GestureDetector(
                 onTap: state.isLoading
                     ? null
@@ -36,27 +37,28 @@ class PickImageSection extends StatelessWidget {
                     child: state.isLoading
                         ? const CircularProgressIndicator(color: Colors.white70)
                         : const Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.add_photo_alternate,
-                                color: Colors.white70,
-                                size: 40,
-                              ),
-                              SizedBox(height: 8),
-                              Text(
-                                'Add Images',
-                                style: TextStyle(
-                                  color: Colors.white70,
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ],
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.add_photo_alternate,
+                          color: Colors.white70,
+                          size: 40,
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          'Add Images',
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 14,
                           ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
 
+              // Selected Images
               if (state.images.isNotEmpty) ...[
                 const SizedBox(height: 16),
                 SizedBox(

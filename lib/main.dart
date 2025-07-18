@@ -3,11 +3,15 @@ import 'package:ecommerce_app/core/index.dart';
 import 'package:ecommerce_app/presentation/splash/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  await dotenv.load(fileName: ".env");
   await FirebaseInitializer.initialize();
+  await SupabaseInitializer.initialize();
+
   await HiveInitializer.initialize();
   initializeDependency();
   Bloc.observer = const AppBlocObserver();

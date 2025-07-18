@@ -10,12 +10,9 @@ import 'package:ecommerce_app/domain/auth/index.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hive/hive.dart';
 
-//datasource
 part './datasource/auth_firebase_service.dart';
 part './datasource/auth_local_service.dart';
-// entity
-part './models/create_user_request.dart';
-part './models/login_user_request.dart';
 part './models/user_model.dart';
-//repositories
 part './repositories/auth_repository_impl.dart';
+part 'request/create_user_request.dart';
+part 'request/login_user_request.dart';

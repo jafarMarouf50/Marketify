@@ -10,4 +10,6 @@ class AppConstants {
   static const String kPrefsBox = 'prefs_box';
 
   static const List<String> allBoxNames = [kUserBox, kPrefsBox];
+  static final supabaseUrl = dotenv.env['SUPABASE_URL'];
+  static final supabaseApiKey = dotenv.env['SUPABASE_KEY'];
 }

@@ -19,6 +19,7 @@ class _AddProductViewState extends State<AddProductView> {
 
   String? _selectedCategory;
   bool _isLoading = false;
+  late final ImageListManager _imageManager;
   bool _hasDiscount = false;
 
   final List<String> _categories = [
@@ -31,6 +32,12 @@ class _AddProductViewState extends State<AddProductView> {
     'Toys',
     'Food',
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _imageManager = ImageListManager();
+  }
 
   Future<void> _saveProduct() async {
     if (_formKey.currentState!.validate()) {
@@ -82,7 +89,7 @@ class _AddProductViewState extends State<AddProductView> {
               // Product Images
               TextFormFieldTitle(title: 'Product Images'),
               const SizedBox(height: 12),
-              PickImageSection(),
+              PickImageSection(imageListManager: _imageManager,),
               const SizedBox(height: 24),
 
               // Product Name

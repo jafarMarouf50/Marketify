@@ -48,3 +48,7 @@ part 'widget/filter_type_bottom_sheet/option_selector_view.dart';
 part 'widget/filter_type_bottom_sheet/reusable_option_bottom_sheet.dart';
 part 'widget/product_card/product_card.dart';
 part 'widget/profile_image/profile_image.dart';
+part 'bloc/image_manager/image_manager_cubit.dart';
+part 'bloc/image_manager/image_manager_state.dart';
+part 'widget/image_section/custom_image_section.dart';
+part 'functions/show_image_source_dialog.dart';
