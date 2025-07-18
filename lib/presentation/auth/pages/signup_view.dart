@@ -144,7 +144,7 @@ class SignupViewContent extends StatelessWidget {
             onPressed: cubit.togglePasswordVisibility,
           ),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 12),
         PasswordStrengthIndicator(),
       ],
     );
@@ -169,18 +169,12 @@ class SignupViewContent extends StatelessWidget {
             ),
           );
         } else {
-          log("____)))))))))))))______");
-          // cubit.autoValidateMode = AutovalidateMode.always;
           cubit.enableAutoValidate();
         }
       },
       title: "Continue",
     );
-    // return BlocBuilder<SignupCubit, SignupState>(
-    //   builder: (context, state) {
-    //
-    //   },
-    // );
+
   }
 
   Widget _authPrompt(BuildContext context) {

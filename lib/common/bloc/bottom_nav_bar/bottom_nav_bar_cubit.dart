@@ -23,7 +23,7 @@ class BottomNavBarCubit extends Cubit<int> {
     if ((index - currentPage).abs() == 1) {
       pageController.animateToPage(
         index,
-        duration: const Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 400),
         curve: Curves.easeInOut,
       );
     } else {

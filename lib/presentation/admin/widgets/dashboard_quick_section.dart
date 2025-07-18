@@ -18,7 +18,7 @@ class DashboardQuickSection extends StatelessWidget {
           label: 'Add Category',
           color: const Color(0xFF06B6D4),
           onTap: () {
-            AppNavigator.push(context, const AddCategoryScreen());
+            AppNavigator.push(context, const AddCategoryView());
 
           },
         ),

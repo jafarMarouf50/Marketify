@@ -1,6 +1,14 @@
 part of '../index.dart';
 
 class CustomTextFormField extends StatelessWidget {
+  final TextEditingController controller;
+  final String? hintText;
+  final String? Function(String?)? validator;
+  final int maxLines;
+  final TextInputType? keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
+  final TextInputAction? textInputAction;
+
   const CustomTextFormField({
     super.key,
     required this.controller,
@@ -9,14 +17,9 @@ class CustomTextFormField extends StatelessWidget {
     this.maxLines = 1,
     this.validator,
     this.inputFormatters,
+    this.textInputAction
   });
 
-  final TextEditingController controller;
-  final String? hintText;
-  final String? Function(String?)? validator;
-  final int maxLines;
-  final TextInputType? keyboardType;
-  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +29,7 @@ class CustomTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       inputFormatters: inputFormatters,
       style: const TextStyle(color: Colors.white),
+      textInputAction: textInputAction ?? TextInputAction.next,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(color: Colors.white54),

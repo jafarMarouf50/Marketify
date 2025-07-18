@@ -6,7 +6,7 @@ class BasicReactiveButton extends StatelessWidget {
   final double? height;
   final double? width;
   final Widget? content;
-
+final Color? backgroundColor;
   const BasicReactiveButton({
     super.key,
     required this.onPressed,
@@ -14,6 +14,7 @@ class BasicReactiveButton extends StatelessWidget {
     this.height,
     this.width,
     this.content,
+    this.backgroundColor,
   });
 
   @override
@@ -32,6 +33,7 @@ class BasicReactiveButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: null,
       style: ElevatedButton.styleFrom(
+        backgroundColor: backgroundColor??AppColorsDark.primary,
         minimumSize: Size(
           width ?? MediaQuery.of(context).size.width,
           height ?? 50,

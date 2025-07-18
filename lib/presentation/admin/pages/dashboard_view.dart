@@ -17,7 +17,6 @@ class DashboardBody extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         DashboardAppBar(),
-
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.all(8),
@@ -44,7 +43,7 @@ class DashboardBody extends StatelessWidget {
           ),
         ),
         SliverPadding(
-          padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
           sliver: DashboardQuickSection(),
         ),
 

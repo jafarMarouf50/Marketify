@@ -6,13 +6,18 @@ Future<void> initializeDependency() async {
   // services
   // remote
   getIt.registerSingleton<AuthFirebaseService>(AuthFirebaseServiceImp());
+  getIt.registerSingleton<CategoryFirebaseService>(
+    CategoryFirebaseServiceImpl(),
+  );
   // local
   getIt.registerSingleton<AuthLocalService>(AuthLocalServiceImpl());
 
   // repositories
   getIt.registerSingleton<AuthRepository>(AuthRepositoryImpl());
+  getIt.registerSingleton<CategoryRepository>(CategoryRepositoryImpl());
 
   // usecase
+
   getIt.registerSingleton<SignupUseCase>(SignupUseCase());
   getIt.registerSingleton<SigninUseCase>(SigninUseCase());
   getIt.registerSingleton<GetAgesUseCase>(GetAgesUseCase());
@@ -20,4 +25,7 @@ Future<void> initializeDependency() async {
   getIt.registerSingleton<IsLoggedInUseCase>(IsLoggedInUseCase());
   getIt.registerSingleton<GetCurrentUserUseCase>(GetCurrentUserUseCase());
   getIt.registerSingleton<SignoutUseCase>(SignoutUseCase());
+  //=======================================================//
+  getIt.registerSingleton<StoreCategoryUseCase>(StoreCategoryUseCase());
+
 }

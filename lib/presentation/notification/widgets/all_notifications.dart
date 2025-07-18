@@ -44,7 +44,7 @@ class AllNotifications extends StatelessWidget {
     );
   }
 
-  _buildNotificationIcon({bool isNew = false}) {
+  Stack _buildNotificationIcon({bool isNew = false}) {
     return Stack(
       children: [
         Container(
