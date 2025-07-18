@@ -86,8 +86,8 @@ class PickImageSection extends StatelessWidget {
                               ),
                             ),
                             Positioned(
-                              top: 4,
-                              right: 4,
+                              top: -2,
+                              right: -2,
                               child: GestureDetector(
                                 onTap: () => context
                                     .read<ImageManagerCubit>()

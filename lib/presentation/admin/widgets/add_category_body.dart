@@ -21,6 +21,8 @@ class AddCategoryBody extends StatelessWidget {
                   ..showSnackBar(snackBar);
                 categoryCubit.titleController.clear();
                 imageManager.clearImages();
+                Future.delayed(Duration(milliseconds: 200));
+                Navigator.of(context).pop();
               }
               if (state is ButtonStateFailure) {
                 final snackBar = AppSnackBar.show(
@@ -57,7 +59,6 @@ class AddCategoryBody extends StatelessWidget {
                   ),
                   SizedBox(height: 16),
 
-                  // Image Upload Section
                   TextFormFieldTitle(title: 'Category Image'),
                   const SizedBox(height: 12),
                   PickImageSection(
@@ -102,5 +103,4 @@ class AddCategoryBody extends StatelessWidget {
       },
     );
   }
-
 }

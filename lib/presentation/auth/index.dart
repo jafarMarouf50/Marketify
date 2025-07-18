@@ -1,7 +1,5 @@
 library;
 
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/common/index.dart';
 import 'package:ecommerce_app/core/index.dart';
